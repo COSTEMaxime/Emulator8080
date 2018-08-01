@@ -365,139 +365,167 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             break;
         #pragma endregion
 
-        case 0TO_CHANGE:
-             /*
-                Name : Move immediate
-                Explanation : The content of byte 2 of the instruction is moved
-                    to register r
-                Encoding :  +---------------+
-                            |0|0|D|D|D|1|1|0|
-                            +---------------+
-                            |      DATA     |
-                            +---------------+
+        /*
+            Name : Move immediate
+            Explanation : The content of byte 2 of the instruction is moved
+                to register r
+            Encoding :  +---------------+
+                        |0|0|D|D|D|1|1|0|
+                        +---------------+
+                        |      DATA     |
+                        +---------------+
 
-                Cycles / States : 2 / 7
-                Flags : None
-            */
-            print_instruction(*opcode, "MVI r, data", "(r) <= (byte 2)");
+            Cycles / States : 2 / 7
+            Flags : None
+        */
+        #pragma region
+        case 0x06:
+            printf("%x04\tMVI B, d8\t(B) <= #$%02x", *opcode, opcode[1]);
+            op_bytes = 2;
+            break;
+        case 0x0E:
+            printf("%x04\tMVI C, d8\t(C) <= #$%02x", *opcode, opcode[1]);
+            op_bytes = 2;
+            break;
+        case 0x16:
+            printf("%x04\tMVI D, d8\t(D) <= #$%02x", *opcode, opcode[1]);
+            op_bytes = 2;
+            break;
+        case 0x1E:
+            printf("%x04\tMVI E, d8\t(E) <= #$%02x", *opcode, opcode[1]);
+            op_bytes = 2;
+            break;
+        case 0x26:
+            printf("%x04\tMVI H, d8\t(H) <= #$%02x", *opcode, opcode[1]);
+            op_bytes = 2;
+            break;
+        case 0x2E:
+            printf("%x04\tMVI L, d8\t(L) <= #$%02x", *opcode, opcode[1]);
+            op_bytes = 2;
+            break;
+        case 0x3E:
+            printf("%x04\tMVI A, d8\t(A) <= #$%02x", *opcode, opcode[1]);
+            op_bytes = 2;
+            break;
+        #pragma endregion
+
+        /*
+            Name : Move to memory immediate
+            Explanation : The content of byte 2 of the instruction is moved
+                to the memory location whose address is in register H and L
+            Encoding :  +---------------+
+                        |0|0|1|1|0|1|1|0|
+                        +---------------+
+                        |      DATA     |
+                        +---------------+
+            Cycles / States : 3 / 7
+            Flags : None
+        */
+        case 0x36:
+            printf("%x04\tMVI M, d8\t((H)(L)) <= #$%02x", *opcode, opcode[1]);
+            op_bytes = 2;
             break;
 
-
+        /*
+            Name : Load register pair immediate
+            Explanation : Byte  3 of the instruction is moved into the high-order
+                register (rh) of the register pair rp. Byte 2 of the instruction is
+                moved into the low-order register (rl) of the register pair rp
+            Encoding :  +---------------+
+                        |0|0|R|P|0|0|0|1|
+                        +---------------+
+                        | low-order DATA|
+                        +---------------+
+                        |high-order DATA|
+                        +---------------+
+            Cycles / States : 3 / 10
+            Flags : None
+        */
+       #pragma region
         case 0TO_CHANGE:
-            /*
-                Name : Move to memory immediate
-                Explanation : The content of byte 2 of the instruction is moved
-                    to the memory location whose address is in register H and L
-                Encoding :  +---------------+
-                            |0|0|1|1|0|1|1|0|
-                            +---------------+
-                            |      DATA     |
-                            +---------------+
-                Cycles / States : 3 / 7
-                Flags : None
-            */
-            print_instruction(*opcode, "MVI M, data", "((H) (L)) <= (byte 2)");
-            break;
-
-        case 0TO_CHANGE:
-            /*
-                Name : Load register pair immediate
-                Explanation : Byte  3 of the instruction is moved into the high-order
-                    register (rh) of the register pair rp. Byte 2 of the instruction is
-                    moved into the low-order register (rl) of the register pair rp
-                Encoding :  +---------------+
-                            |0|0|R|P|0|0|0|1|
-                            +---------------+
-                            | low-order DATA|
-                            +---------------+
-                            |high-order DATA|
-                            +---------------+
-
-                Cycles / States : 3 / 10
-                Flags : None
-            */
             print_instruction(*opcode, "LXi rp, data 16", "(rh) <= (byte 3), (rl) <= (byte 2)");
             break;
+        #pragma endregion
 
+        /*
+            Name : Load Accumulator direct
+            Explanation : the content of the memory location ,whose address is
+                specified in byte 2 and byte 3 of the instruction, is moved to register A
+            Encoding :  +---------------+
+                        |0|0|1|1|1|0|1|0|
+                        +---------------+
+                        | low-order ADDR|
+                        +---------------+
+                        |high-order ADDR|
+                        +---------------+
+            Cycles / States : 4 / 13
+            Flags : None
+        */
         case 0TO_CHANGE:
-            /*
-                Name : Load Accumulator direct
-                Explanation : the content of the memory location ,whose address is
-                    specified in byte 2 and byte 3 of the instruction, is moved to register A
-                Encoding :  +---------------+
-                            |0|0|1|1|1|0|1|0|
-                            +---------------+
-                            | low-order ADDR|
-                            +---------------+
-                            |high-order ADDR|
-                            +---------------+
-                Cycles / States : 4 / 13
-                Flags : None
-            */
             print_instruction(*opcode, "LDA addr", "(A) <= ((byte 3) (byte 2))");
             break;
 
+        /*
+            Name : Store Accumulator direct
+            Explanation : The content of the accumulator is moved to the memory
+                location whose address is specified in byte 2 and byte 3 of the instruction
+            Encoding :  +---------------+
+                        |0|0|1|1|0|0|1|0|
+                        +---------------+
+                        | low-order ADDR|
+                        +---------------+
+                        |high-order ADDR|
+                        +---------------+
+            Cycles / States : 4 / 13
+            Flags : None
+        */
         case 0TO_CHANGE:
-            /*
-                Name : Store Accumulator direct
-                Explanation : The content of the accumulator is moved to the memory
-                    location whose address is specified in byte 2 and byte 3 of the instruction
-                Encoding :  +---------------+
-                            |0|0|1|1|0|0|1|0|
-                            +---------------+
-                            | low-order ADDR|
-                            +---------------+
-                            |high-order ADDR|
-                            +---------------+
-                Cycles / States : 4 / 13
-                Flags : None
-            */
             print_instruction(*opcode, "STA addr", "((byte 3 (byte 2)) <= A");
             break;
 
+        /*
+            Name : Load H and L direct
+            Explanation : The content of the memory location, whose address is
+                specified in byte 2 and byte 3 of the instruction, is moved to
+                register L. The content of the memory location at the succeeding
+                address is moved to register H
+            Encoding :  +---------------+
+                        |0|0|1|0|1|0|1|0|
+                        +---------------+
+                        | low-order ADDR|
+                        +---------------+
+                        |high-order ADDR|
+                        +---------------+
+            Cycles / States : 5 / 16
+            Flags : None
+        */
         case 0TO_CHANGE:
-            /*
-                Name : Load H and L direct
-                Explanation : The content of the memory location, whose address is
-                    specified in byte 2 and byte 3 of the instruction, is moved to
-                    register L. The content of the memory location at the succeeding
-                    address is moved to register H
-                Encoding :  +---------------+
-                            |0|0|1|0|1|0|1|0|
-                            +---------------+
-                            | low-order ADDR|
-                            +---------------+
-                            |high-order ADDR|
-                            +---------------+
-                Cycles / States : 5 / 16
-                Flags : None
-            */
             print_instruction(*opcode, "LHLD addr", "(L) <= ((byte 3) (byte 2)), (H) <= ((byte 3) (byte 2) + 1)");
             break;
 
+        /*
+            Name : Store H and L direct
+            Explanation :
+            Encoding :  +---------------+
+                        |||||||||
+                        +---------------+
+            Cycles / States :  /
+            Flags :
+        */
         case 0TO_CHANGE:
-            /*
-                Name : Store H and L direct
-                Explanation :
-                Encoding :  +---------------+
-                            |||||||||
-                            +---------------+
-                Cycles / States :  /
-                Flags :
-            */
             print_instruction(*opcode, "", "");
             break;
 
+        /*
+            Name :
+            Explanation :
+            Encoding :  +---------------+
+                        |||||||||
+                        +---------------+
+            Cycles / States :  /
+            Flags :
+        */
         case 0TO_CHANGE:
-            /*
-                Name :
-                Explanation :
-                Encoding :  +---------------+
-                            |||||||||
-                            +---------------+
-                Cycles / States :  /
-                Flags :
-            */
             print_instruction(*opcode, "", "");
             break;
 
