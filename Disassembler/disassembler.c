@@ -324,19 +324,46 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             break;
         #pragma endregion
 
-        case 0TO_CHANGE:
-            /*
-                Name : Move to memory
-                Explanation : The content of the register r is moved to the
-                    memory location whose address is in registers H and L
-                Encoding :  +---------------+
-                            |0|1|1|1|0|S|S|S|
-                            +---------------+
-                Cycles / States : 2 / 7
-                Flags : None
-            */
-            print_instruction(*opcode, "MOV M, r", "((H) (L)) <= r");
+        /*
+            Name : Move to memory
+            Explanation : The content of the register r is moved to the
+                memory location whose address is in registers H and L
+            Encoding :  +---------------+
+                        |0|1|1|1|0|S|S|S|
+                        +---------------+
+            Cycles / States : 2 / 7
+            Flags : None
+        */
+        #pragma region
+        case 0x70:
+            printf("%x04\tMOV M, B\t((H)(L)) <= (B)", *opcode);
+            op_bytes = 1;
             break;
+        case 0x71:
+            printf("%x04\tMOV M, C\t((H)(L)) <= (C)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x72:
+            printf("%x04\tMOV M, D\t((H)(L)) <= (D)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x73:
+            printf("%x04\tMOV M, E\t((H)(L)) <= (E)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x74:
+            printf("%x04\tMOV M, H\t((H)(L)) <= (H)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x75:
+            printf("%x04\tMOV M, L\t((H)(L)) <= (L)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x77:
+            printf("%x04\tMOV M, A\t((H)(L)) <= (A)", *opcode);
+            op_bytes = 1;
+            break;
+        #pragma endregion
 
         case 0TO_CHANGE:
              /*
