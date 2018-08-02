@@ -15,6 +15,18 @@ void print_instruction(int opcode, char *mnemonic, char *operation);
 
 /*
     Symbols
+    Accumulator : register A
+    addr        : 16-bits address
+    d8          : 8-bits data
+    d16         : 16-bits data
+    byte 2      : the second byte of the instruction
+    byte 3      : the third byte of the instruction
+    port        : 8-bits address of an I/O device
+    PC          : 16-bits program counter register (PCH and PCL for the high-order and low-order 8 bits)
+    SP          : 16-bits stack pointer register (SPH and SPL for the high-order and low-order 8 bits)
+
+    #           : the actual value
+    ()          : the value at the address
 
     ===== DDD / SSS =====
 
@@ -33,6 +45,27 @@ void print_instruction(int opcode, char *mnemonic, char *operation);
     +-----------+----------+
 
 
+    ===== Register Pair =====
+
+    rp = One of the register pair :
+        - B represents the B, C pair, with B as the high-order register and C as the low-order register
+        - D represents the D, E pair, with D as the high-order register and E as the low-order register
+        - H represents the H, L pair, with H as the high-order register and L as the low-order register
+        - SP represents the 16 bits stack pointer register
+
+    rh = The first / high-order register of a designated register pair
+    rl = The second / low-order register of a designated register pair
+
+    +-----------+----------+
+    |     RP    | Registers|
+    +----------------------+
+    |     00    |    B-C   |
+    |     01    |    D-E   |
+    |     10    |    H-L   |
+    |     11    |    SP    |
+    +-----------+----------+
+
+
     ===== Flags =====
 
     +---------------+
@@ -41,7 +74,7 @@ void print_instruction(int opcode, char *mnemonic, char *operation);
     |S|Z|-|A|-|P|-|C|
     +---------------+
 
-    S - Sign Flag : set if the result of an instruction is negative
+    S - Sign Flag : set if the most significant bit of the result of the operation has the value 1
     Z - Zero Flag : set if the result of an instruction has the value 0
     Not used - Always zero
     AC/H - Auxiliary carry : carry flag for binary coded decimal arithmetic
@@ -86,199 +119,199 @@ int disassemble8080(unsigned char *code_buffer, int pc)
         */
         #pragma region
         case 0x40:
-            printf("%x04\tMOV B, B\t(B) <= (B)", *opcode);
+            printf("%04x\tMOV B, B\t(B) <= (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x41:
-            printf("%x04\tMOV B, C\t(B) <= (C)", *opcode);
+            printf("%04x\tMOV B, C\t(B) <= (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x42:
-            printf("%x04\tMOV B, D\t(B) <= (D)", *opcode);
+            printf("%04x\tMOV B, D\t(B) <= (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x43:
-            printf("%x04\tMOV B, E\t(B) <= (E)", *opcode);
+            printf("%04x\tMOV B, E\t(B) <= (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x44:
-            printf("%x04\tMOV B, H\t(B) <= (H)", *opcode);
+            printf("%04x\tMOV B, H\t(B) <= (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x45:
-            printf("%x04\tMOV B, L\t(B) <= (L)", *opcode);
+            printf("%04x\tMOV B, L\t(B) <= (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x47:
-            printf("%x04\tMOV B, A\t(B) <= (A)", *opcode);
+            printf("%04x\tMOV B, A\t(B) <= (A)", *opcode);
             op_bytes = 1;
             break;
         case 0x48:
-            printf("%x04\tMOV C, B\t(C) <= (B)", *opcode);
+            printf("%04x\tMOV C, B\t(C) <= (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x49:
-            printf("%x04\tMOV C, C\t(C) <= (C)", *opcode);
+            printf("%04x\tMOV C, C\t(C) <= (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x4A:
-            printf("%x04\tMOV C, D\t(C) <= (D)", *opcode);
+            printf("%04x\tMOV C, D\t(C) <= (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x4B:
-            printf("%x04\tMOV B, E\t(C) <= (E)", *opcode);
+            printf("%04x\tMOV B, E\t(C) <= (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x4C:
-            printf("%x04\tMOV B, H\t(C) <= (H)", *opcode);
+            printf("%04x\tMOV B, H\t(C) <= (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x4D:
-            printf("%x04\tMOV B, L\t(C) <= (L)", *opcode);
+            printf("%04x\tMOV B, L\t(C) <= (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x4F:
-            printf("%x04\tMOV B, A\t(C) <= (A)", *opcode);
+            printf("%04x\tMOV B, A\t(C) <= (A)", *opcode);
             op_bytes = 1;
             break;
         case 0x50:
-            printf("%x04\tMOV D, B\t(D) <= (B)", *opcode);
+            printf("%04x\tMOV D, B\t(D) <= (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x51:
-            printf("%x04\tMOV D, C\t(D) <= (C)", *opcode);
+            printf("%04x\tMOV D, C\t(D) <= (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x52:
-            printf("%x04\tMOV D, D\t(D) <= (D)", *opcode);
+            printf("%04x\tMOV D, D\t(D) <= (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x53:
-            printf("%x04\tMOV D, E\t(D) <= (E)", *opcode);
+            printf("%04x\tMOV D, E\t(D) <= (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x54:
-            printf("%x04\tMOV D, H\t(D) <= (H)", *opcode);
+            printf("%04x\tMOV D, H\t(D) <= (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x55:
-            printf("%x04\tMOV D, L\t(D) <= (L)", *opcode);
+            printf("%04x\tMOV D, L\t(D) <= (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x57:
-            printf("%x04\tMOV D, A\t(D) <= (A)", *opcode);
+            printf("%04x\tMOV D, A\t(D) <= (A)", *opcode);
             op_bytes = 1;
             break;
         case 0x58:
-            printf("%x04\tMOV E, B\t(E) <= (B)", *opcode);
+            printf("%04x\tMOV E, B\t(E) <= (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x59:
-            printf("%x04\tMOV E, C\t(E) <= (C)", *opcode);
+            printf("%04x\tMOV E, C\t(E) <= (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x5A:
-            printf("%x04\tMOV E, D\t(E) <= (D)", *opcode);
+            printf("%04x\tMOV E, D\t(E) <= (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x5B:
-            printf("%x04\tMOV E, E\t(E) <= (E)", *opcode);
+            printf("%04x\tMOV E, E\t(E) <= (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x5C:
-            printf("%x04\tMOV E, H\t(E) <= (H)", *opcode);
+            printf("%04x\tMOV E, H\t(E) <= (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x5D:
-            printf("%x04\tMOV E, L\t(E) <= (L)", *opcode);
+            printf("%04x\tMOV E, L\t(E) <= (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x5F:
-            printf("%x04\tMOV E, A\t(E) <= (A)", *opcode);
+            printf("%04x\tMOV E, A\t(E) <= (A)", *opcode);
             op_bytes = 1;
             break;
         case 0x60:
-            printf("%x04\tMOV H, B\t(H) <= (B)", *opcode);
+            printf("%04x\tMOV H, B\t(H) <= (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x61:
-            printf("%x04\tMOV H, C\t(H) <= (C)", *opcode);
+            printf("%04x\tMOV H, C\t(H) <= (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x62:
-            printf("%x04\tMOV H, D\t(H) <= (D)", *opcode);
+            printf("%04x\tMOV H, D\t(H) <= (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x63:
-            printf("%x04\tMOV H, E\t(H) <= (E)", *opcode);
+            printf("%04x\tMOV H, E\t(H) <= (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x64:
-            printf("%x04\tMOV H, H\t(H) <= (H)", *opcode);
+            printf("%04x\tMOV H, H\t(H) <= (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x65:
-            printf("%x04\tMOV H, L\t(H) <= (L)", *opcode);
+            printf("%04x\tMOV H, L\t(H) <= (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x67:
-            printf("%x04\tMOV H, A\t(H) <= (A)", *opcode);
+            printf("%04x\tMOV H, A\t(H) <= (A)", *opcode);
             op_bytes = 1;
             break;
         case 0x68:
-            printf("%x04\tMOV L, B\t(L) <= (B)", *opcode);
+            printf("%04x\tMOV L, B\t(L) <= (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x69:
-            printf("%x04\tMOV L, C\t(L) <= (C)", *opcode);
+            printf("%04x\tMOV L, C\t(L) <= (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x6A:
-            printf("%x04\tMOV L, D\t(L) <= (D)", *opcode);
+            printf("%04x\tMOV L, D\t(L) <= (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x6B:
-            printf("%x04\tMOV L, E\t(L) <= (E)", *opcode);
+            printf("%04x\tMOV L, E\t(L) <= (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x6C:
-            printf("%x04\tMOV L, H\t(L) <= (H)", *opcode);
+            printf("%04x\tMOV L, H\t(L) <= (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x6D:
-            printf("%x04\tMOV L, L\t(L) <= (L)", *opcode);
+            printf("%04x\tMOV L, L\t(L) <= (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x6F:
-            printf("%x04\tMOV L, A\t(L) <= (A)", *opcode);
+            printf("%04x\tMOV L, A\t(L) <= (A)", *opcode);
             op_bytes = 1;
             break;
         case 0x78:
-            printf("%x04\tMOV A, B\t(A) <= (B)", *opcode);
+            printf("%04x\tMOV A, B\t(A) <= (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x79:
-            printf("%x04\tMOV A, C\t(A) <= (C)", *opcode);
+            printf("%04x\tMOV A, C\t(A) <= (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x7A:
-            printf("%x04\tMOV A, D\t(A) <= (D)", *opcode);
+            printf("%04x\tMOV A, D\t(A) <= (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x7B:
-            printf("%x04\tMOV A, E\t(A) <= (E)", *opcode);
+            printf("%04x\tMOV A, E\t(A) <= (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x7C:
-            printf("%x04\tMOV A, H\t(A) <= (H)", *opcode);
+            printf("%04x\tMOV A, H\t(A) <= (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x7D:
-            printf("%x04\tMOV A, L\t(A) <= (L)", *opcode);
+            printf("%04x\tMOV A, L\t(A) <= (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x7F:
-            printf("%x04\tMOV A, A\t(A) <= (A)", *opcode);
+            printf("%04x\tMOV A, A\t(A) <= (A)", *opcode);
             op_bytes = 1;
             break;
         #pragma endregion
@@ -295,31 +328,31 @@ int disassemble8080(unsigned char *code_buffer, int pc)
         */
         #pragma region
         case 0x46:
-            printf("%x04\tMOV B, M\t(B) <= ((H)(L))", *opcode);
+            printf("%04x\tMOV B, M\t(B) <= ((H)(L))", *opcode);
             op_bytes = 1;
             break;
         case 0x4E:
-            printf("%x04\tMOV C, M\t(C) <= ((H)(L))", *opcode);
+            printf("%04x\tMOV C, M\t(C) <= ((H)(L))", *opcode);
             op_bytes = 1;
             break;
         case 0x56:
-            printf("%x04\tMOV D, M\t(D) <= ((H)(L))", *opcode);
+            printf("%04x\tMOV D, M\t(D) <= ((H)(L))", *opcode);
             op_bytes = 1;
             break;
         case 0x5E:
-            printf("%x04\tMOV E, M\t(E) <= ((H)(L))", *opcode);
+            printf("%04x\tMOV E, M\t(E) <= ((H)(L))", *opcode);
             op_bytes = 1;
             break;
         case 0x66:
-            printf("%x04\tMOV H, M\t(H) <= ((H)(L))", *opcode);
+            printf("%04x\tMOV H, M\t(H) <= ((H)(L))", *opcode);
             op_bytes = 1;
             break;
         case 0x6E:
-            printf("%x04\tMOV L, M\t(L) <= ((H)(L))", *opcode);
+            printf("%04x\tMOV L, M\t(L) <= ((H)(L))", *opcode);
             op_bytes = 1;
             break;
         case 0x7E:
-            printf("%x04\tMOV A, M\t(A) <= ((H)(L))", *opcode);
+            printf("%04x\tMOV A, M\t(A) <= ((H)(L))", *opcode);
             op_bytes = 1;
             break;
         #pragma endregion
@@ -336,31 +369,31 @@ int disassemble8080(unsigned char *code_buffer, int pc)
         */
         #pragma region
         case 0x70:
-            printf("%x04\tMOV M, B\t((H)(L)) <= (B)", *opcode);
+            printf("%04x\tMOV M, B\t((H)(L)) <= (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x71:
-            printf("%x04\tMOV M, C\t((H)(L)) <= (C)", *opcode);
+            printf("%04x\tMOV M, C\t((H)(L)) <= (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x72:
-            printf("%x04\tMOV M, D\t((H)(L)) <= (D)", *opcode);
+            printf("%04x\tMOV M, D\t((H)(L)) <= (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x73:
-            printf("%x04\tMOV M, E\t((H)(L)) <= (E)", *opcode);
+            printf("%04x\tMOV M, E\t((H)(L)) <= (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x74:
-            printf("%x04\tMOV M, H\t((H)(L)) <= (H)", *opcode);
+            printf("%04x\tMOV M, H\t((H)(L)) <= (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x75:
-            printf("%x04\tMOV M, L\t((H)(L)) <= (L)", *opcode);
+            printf("%04x\tMOV M, L\t((H)(L)) <= (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x77:
-            printf("%x04\tMOV M, A\t((H)(L)) <= (A)", *opcode);
+            printf("%04x\tMOV M, A\t((H)(L)) <= (A)", *opcode);
             op_bytes = 1;
             break;
         #pragma endregion
@@ -380,31 +413,31 @@ int disassemble8080(unsigned char *code_buffer, int pc)
         */
         #pragma region
         case 0x06:
-            printf("%x04\tMVI B, d8\t(B) <= #$%02x", *opcode, opcode[1]);
+            printf("%04x\tMVI B, d8\t(B) <= #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
         case 0x0E:
-            printf("%x04\tMVI C, d8\t(C) <= #$%02x", *opcode, opcode[1]);
+            printf("%04x\tMVI C, d8\t(C) <= #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
         case 0x16:
-            printf("%x04\tMVI D, d8\t(D) <= #$%02x", *opcode, opcode[1]);
+            printf("%04x\tMVI D, d8\t(D) <= #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
         case 0x1E:
-            printf("%x04\tMVI E, d8\t(E) <= #$%02x", *opcode, opcode[1]);
+            printf("%04x\tMVI E, d8\t(E) <= #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
         case 0x26:
-            printf("%x04\tMVI H, d8\t(H) <= #$%02x", *opcode, opcode[1]);
+            printf("%04x\tMVI H, d8\t(H) <= #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
         case 0x2E:
-            printf("%x04\tMVI L, d8\t(L) <= #$%02x", *opcode, opcode[1]);
+            printf("%04x\tMVI L, d8\t(L) <= #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
         case 0x3E:
-            printf("%x04\tMVI A, d8\t(A) <= #$%02x", *opcode, opcode[1]);
+            printf("%04x\tMVI A, d8\t(A) <= #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
         #pragma endregion
@@ -422,7 +455,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0x36:
-            printf("%x04\tMVI M, d8\t((H)(L)) <= #$%02x", *opcode, opcode[1]);
+            printf("%04x\tMVI M, d8\t((H)(L)) <= #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
 
@@ -443,7 +476,20 @@ int disassemble8080(unsigned char *code_buffer, int pc)
         */
        #pragma region
         case 0TO_CHANGE:
-            print_instruction(*opcode, "LXi rp, data 16", "(rh) <= (byte 3), (rl) <= (byte 2)");
+            printf("%04x\tLXI B, d16\t(B) <= #$%02x, (C) <= #$%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+        case 0TO_CHANGE:
+            printf("%04x\tLXI D, d16\t(D) <= #$%02x, (E) <= #$%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+        case 0TO_CHANGE:
+            printf("%04x\tLXI H, d16\t(H) <= #$%02x, (L) <= #$%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+        case 0TO_CHANGE:
+            printf("%04x\tLXI SP, d16\t(SPH) <= #$%02x, (SPL) <= #$%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
             break;
         #pragma endregion
 
@@ -461,8 +507,8 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Cycles / States : 4 / 13
             Flags : None
         */
-        case 0TO_CHANGE:
-            print_instruction(*opcode, "LDA addr", "(A) <= ((byte 3) (byte 2))");
+        case 0x3A:
+            printf("%04x\tLDA a16\t(A) <= ($%02x%02x)", *opcode, );
             break;
 
         /*
