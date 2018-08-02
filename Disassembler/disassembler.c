@@ -546,34 +546,83 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0x2A:
-            printf("%04x\tLHLD a16\t(L) <= ($%02x%02x)), (H) <= ($%02x%02x + 1)", *opcode, opcode[2], opcode[1], opcode[2], opcode[1]);
+            printf("%04x\tLHLD a16\t(L) <= ($%02x%02x), (H) <= ($%02x%02x + 1)", *opcode, opcode[2], opcode[1], opcode[2], opcode[1]);
             op_bytes = 3;
             break;
 
         /*
             Name : Store H and L direct
-            Explanation :
+            Explanation : The content of the register L is moved to the memory
+                location whose address is specified in byte 2 and byte 3. The content
+                of the regsiter H is moved to the succeeding memory location
             Encoding :  +---------------+
-                        |||||||||
+                        |0|0|1|0|0|0|1|0|
                         +---------------+
-            Cycles / States :  /
-            Flags :
+                        | low-order ADDR|
+                        +---------------+
+                        |high-order ADDR|
+                        +---------------+
+            Cycles / States : 5 / 16
+            Flags : None
         */
-        case 0TO_CHANGE:
-            print_instruction(*opcode, "", "");
+        case 0x22:
+            printf("%04x\tSHLD a16\t($%02x%02x) <= (L), ($%02x%02x + 1) <= (H)", *opcode, opcode[2], opcode[1], opcode[2], opcode[1]);
+            op_bytes = 3;
             break;
 
         /*
-            Name :
-            Explanation :
+            Name : Load accumulator direct
+            Explanation : The content of the memory location, whose address is in
+                the register pair rp, is moved to the register A. Note: only register
+                pairs rp = B or rp = D may be specified
             Encoding :  +---------------+
-                        |||||||||
+                        |0|0|R|P|1|0|1|0|
                         +---------------+
-            Cycles / States :  /
-            Flags :
+            Cycles / States : 2 / 7
+            Flags : None
         */
-        case 0TO_CHANGE:
-            print_instruction(*opcode, "", "");
+        case 0x0A:
+            printf("%04x\tLDAX B\t(A) <= ((B)(C))", *opcode);
+            op_bytes = 3;
+            break;
+        case 0x1A:
+            printf("%04x\tLDAX D\t(A) <= ((D)(E))", *opcode);
+            op_bytes = 3;
+            break;
+
+        /*
+            Name : Store accumulator direct
+            Explanation : The content of the register A is moved to the memory location
+                whose address is in the register pair rp. Note: only register pairs rp = B
+                or rp = D may be specified
+            Encoding :  +---------------+
+                        |0|0|R|P|0|0|1|0|
+                        +---------------+
+            Cycles / States : 2 / 7
+            Flags : None
+        */
+       case 0x02:
+            printf("%04x\tSTAX B\t((B)(C)) <= (A)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x12:
+            printf("%04x\tSTAX D\t((D)(E)) <= (A)", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Exchange H and L with D and E
+            Explanation : The contents of registers H and L are exchanged with the contents
+                of registers D and E
+            Encoding :  +---------------+
+                        |1|1|1|0|1|0|1|1|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : None
+        */
+       case 0xEB:
+            printf("%04x\tXCHG\t(H) <=> (D), (L) <=> (E)", *opcode);
+            op_bytes = 1;
             break;
 
         default:
