@@ -1,8 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void print_instruction(int opcode, char *mnemonic, char *operation);
-
 /*
     1. Read the code into a buffer
     2. Get a pointer to the beginning of the buffer
@@ -548,7 +546,8 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0x2A:
-            print_instruction(*opcode, "LHLD addr", "(L) <= ((byte 3) (byte 2)), (H) <= ((byte 3) (byte 2) + 1)");
+            printf("%04x\tLHLD a16\t(L) <= ($%02x%02x)), (H) <= ($%02x%02x + 1)", *opcode, opcode[2], opcode[1], opcode[2], opcode[1]);
+            op_bytes = 3;
             break;
 
         /*
