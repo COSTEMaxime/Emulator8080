@@ -475,19 +475,19 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
        #pragma region
-        case 0TO_CHANGE:
+        case 0x01:
             printf("%04x\tLXI B, d16\t(B) <= #$%02x, (C) <= #$%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
-        case 0TO_CHANGE:
+        case 0x11:
             printf("%04x\tLXI D, d16\t(D) <= #$%02x, (E) <= #$%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
-        case 0TO_CHANGE:
+        case 0x21:
             printf("%04x\tLXI H, d16\t(H) <= #$%02x, (L) <= #$%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
-        case 0TO_CHANGE:
+        case 0x31:
             printf("%04x\tLXI SP, d16\t(SPH) <= #$%02x, (SPL) <= #$%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
@@ -508,7 +508,8 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0x3A:
-            printf("%04x\tLDA a16\t(A) <= ($%02x%02x)", *opcode, );
+            printf("%04x\tLDA a16\t(A) <= ($%02x%02x)", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
             break;
 
         /*
@@ -525,8 +526,9 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Cycles / States : 4 / 13
             Flags : None
         */
-        case 0TO_CHANGE:
-            print_instruction(*opcode, "STA addr", "((byte 3 (byte 2)) <= A");
+        case 0x32:
+            printf("%04x\tSTA a16\t($%02x%02x) <= (A)", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
             break;
 
         /*
@@ -545,7 +547,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Cycles / States : 5 / 16
             Flags : None
         */
-        case 0TO_CHANGE:
+        case 0x2A:
             print_instruction(*opcode, "LHLD addr", "(L) <= ((byte 3) (byte 2)), (H) <= ((byte 3) (byte 2) + 1)");
             break;
 
