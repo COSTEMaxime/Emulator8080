@@ -75,11 +75,11 @@
     S - Sign Flag : set if the most significant bit of the result of the operation has the value 1
     Z - Zero Flag : set if the result of an instruction has the value 0
     Not used - Always zero
-    AC/H - Auxiliary carry : carry flag for binary coded decimal arithmetic
+    AC - Auxiliary carry : carry flag for binary coded decimal arithmetic
     Not used - Always zero
     P - Parity Flag : set if the result is even
     Not used - Always one
-    C - Carry : set if the last addition resulted in a carry or if the last subtraction resulted in a borrow
+    CY - Carry : set if the last addition resulted in a carry or if the last subtraction resulted in a borrow
 
     TODO: modify flags
         Single byte instruction / Two byte instructions
@@ -613,6 +613,78 @@ int disassemble8080(unsigned char *code_buffer, int pc)
        case 0xEB:
             printf("%04x\tXCHG\t(H) <=> (D), (L) <=> (E)", *opcode);
             op_bytes = 1;
+            break;
+
+        /*
+            Name : Add Register
+            Explanation : The contents of register r is added to the content of the accumulator.
+                The result is placed in the accumulator
+            Encoding :  +---------------+
+                        |1|0|0|0|0|S|S|S|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : Z, S, P, CY, AC
+        */
+       case 0x80:
+            printf("%04x\tADD (B)\t(A) <= (A) + (B)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x81:
+            printf("%04x\tADD (C)\t(A) <= (A) + (C)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x82:
+            printf("%04x\tADD (D)\t(A) <= (A) + (D)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x83:
+            printf("%04x\tADD (E)\t(A) <= (A) + (E)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x84:
+            printf("%04x\tADD (H)\t(A) <= (A) + (H)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x85:
+            printf("%04x\tADD (L)\t(A) <= (A) + (L)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x87:
+            printf("%04x\tADD (A)\t(A) <= (A) + (A)", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Add Memory
+            Explanation : The contents the memory location, whose address is contained in the H
+                and L registers is added to the content of the accumulator. This result is placed
+                in the accumulator
+            Encoding :  +---------------+
+                        |1|0|0|0|0|1|1|0|
+                        +---------------+
+            Cycles / States : 2 / 7
+            Flags : Z, S, P, CY, AC
+        */
+       case 0x86:
+            printf("%04x\tADD (M)\t(A) <= (A) + ((H)(L))", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Add Immediate
+            Explanation : The contents of the second byte of the instruction is added to the
+                content of the accumulator. The result is placed in the accumulator.
+            Encoding :  +---------------+
+                        |1|1|0|0|0|1|1|0|
+                        +---------------+
+                        |      DATA     |
+                        +---------------+
+            Cycles / States : 2 / 7
+            Flags : Z, S, P, CY, AC
+        */
+       case 0xC6:
+            printf("%04x\tADI d8\t(A) <= (A) + #$%02x", *opcode, opcode[2]);
+            op_bytes = 2;
             break;
 
         default:
