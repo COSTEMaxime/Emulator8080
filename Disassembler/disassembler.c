@@ -626,31 +626,31 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0x80:
-            printf("%04x\tADD (B)\t(A) <= (A) + (B)", *opcode);
+            printf("%04x\tADD B\t(A) <= (A) + (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x81:
-            printf("%04x\tADD (C)\t(A) <= (A) + (C)", *opcode);
+            printf("%04x\tADD C\t(A) <= (A) + (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x82:
-            printf("%04x\tADD (D)\t(A) <= (A) + (D)", *opcode);
+            printf("%04x\tADD D\t(A) <= (A) + (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x83:
-            printf("%04x\tADD (E)\t(A) <= (A) + (E)", *opcode);
+            printf("%04x\tADD E\t(A) <= (A) + (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x84:
-            printf("%04x\tADD (H)\t(A) <= (A) + (H)", *opcode);
+            printf("%04x\tADD H\t(A) <= (A) + (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x85:
-            printf("%04x\tADD (L)\t(A) <= (A) + (L)", *opcode);
+            printf("%04x\tADD L\t(A) <= (A) + (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x87:
-            printf("%04x\tADD (A)\t(A) <= (A) + (A)", *opcode);
+            printf("%04x\tADD A\t(A) <= (A) + (A)", *opcode);
             op_bytes = 1;
             break;
 
@@ -666,7 +666,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0x86:
-            printf("%04x\tADD (M)\t(A) <= (A) + ((H)(L))", *opcode);
+            printf("%04x\tADD M\t(A) <= (A) + ((H)(L))", *opcode);
             op_bytes = 1;
             break;
 
@@ -698,37 +698,37 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0x88:
-            printf("%04x\tADC (B)\t(A) <= (A) + (B) + (CY)", *opcode);
+            printf("%04x\tADC B\t(A) <= (A) + (B) + (CY)", *opcode);
             op_bytes = 1;
             break;
         case 0x89:
-            printf("%04x\tADC (C)\t(A) <= (A) + (C) + (CY)", *opcode);
+            printf("%04x\tADC C\t(A) <= (A) + (C) + (CY)", *opcode);
             op_bytes = 1;
             break;
         case 0x8A:
-            printf("%04x\tADC (D)\t(A) <= (A) + (D) + (CY)", *opcode);
+            printf("%04x\tADC D\t(A) <= (A) + (D) + (CY)", *opcode);
             op_bytes = 1;
             break;
         case 0x8B:
-            printf("%04x\tADC (E)\t(A) <= (A) + (E) + (CY)", *opcode);
+            printf("%04x\tADC E\t(A) <= (A) + (E) + (CY)", *opcode);
             op_bytes = 1;
             break;
         case 0x8C:
-            printf("%04x\tADC (H)\t(A) <= (A) + (H) + (CY)", *opcode);
+            printf("%04x\tADC H\t(A) <= (A) + (H) + (CY)", *opcode);
             op_bytes = 1;
             break;
         case 0x8D:
-            printf("%04x\tADC (L)\t(A) <= (A) + (L) + (CY)", *opcode);
+            printf("%04x\tADC L\t(A) <= (A) + (L) + (CY)", *opcode);
             op_bytes = 1;
             break;
         case 0x8F:
-            printf("%04x\tADC (A)\t(A) <= (A) + (A) + (CY)", *opcode);
+            printf("%04x\tADC A\t(A) <= (A) + (A) + (CY)", *opcode);
             op_bytes = 1;
             break;
 
         /*
             Name : Add Memory with Carry
-            Explanation : The contents the memory location whose address is contained in the H
+            Explanation : The contents of the memory location whose address is contained in the H
                 and L registers and the content of the CY flag are added to the accumulator.
                 The result is placed in the accumulator
             Encoding :  +---------------+
@@ -738,12 +738,12 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0x8E:
-            printf("%04x\tADC (M)\t(A) <= (A) + ((H)(L)) + (CY)", *opcode);
+            printf("%04x\tADC M\t(A) <= (A) + ((H)(L)) + (CY)", *opcode);
             op_bytes = 1;
             break;
 
         /*
-            Name : Add Immediate
+            Name : Add Immediate with Carry
             Explanation : The contents of the second byte of the instruction and the content of
                 the CY flag are added to the contents of the accumulator. The result is placed in the accumulator.
             Encoding :  +---------------+
