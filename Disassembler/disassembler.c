@@ -759,6 +759,150 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             op_bytes = 2;
             break;
 
+        /*
+            Name : Substract Register
+            Explanation : The contents of register r is substracted from the content of the accumulator.
+                The result is placed in the accumulator
+            Encoding :  +---------------+
+                        |1|0|0|1|0|S|S|S|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : Z, S, P, CY, AC
+        */
+        case 0x90:
+            printf("%04x\tSUB B\t(A) <= (A) - (B)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x91:
+            printf("%04x\tSUB C\t(A) <= (A) - (C)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x92:
+            printf("%04x\tSUB D\t(A) <= (A) - (D)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x93:
+            printf("%04x\tSUB E\t(A) <= (A) - (E)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x94:
+            printf("%04x\tSUB H\t(A) <= (A) - (H)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x95:
+            printf("%04x\tSUB L\t(A) <= (A) - (L)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x97:
+            printf("%04x\tSUB A\t(A) <= (A) - (A)", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Substract Memory
+            Explanation : The contents of the memory location whose address is contained in the H
+                and L registers is substracted from the content of the accumulator. The result is
+                placed in the accumulator
+            Encoding :  +---------------+
+                        |1|0|0|1|0|1|1|0|
+                        +---------------+
+            Cycles / States : 2 / 7
+            Flags : Z, S, P, CY, AC
+        */
+        case 0x96:
+            printf("%04x\tSUB M\t(A) <= (A) - ((H)(L))", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Substract Immediate
+            Explanation : The contents of the second byte of the instruction is substracted from the
+                content of the accumulator. The result is placed in the accumulator.
+            Encoding :  +---------------+
+                        |1|1|0|1|0|1|1|0|
+                        +---------------+
+                        |      DATA     |
+                        +---------------+
+            Cycles / States : 2 / 7
+            Flags : Z, S, P, CY, AC
+        */
+        case 0xD6:
+            printf("%04x\tSUI d8\t(A) <= (A) - #$%02x", *opcode, opcode[2]);
+            op_bytes = 2;
+            break;
+
+        /*
+            Name : Substract Register with Borrow
+            Explanation : The contents of register r and the content of the CY flag are both substracted
+                from the content of the accumulator. The result is placed in the accumulator
+            Encoding :  +---------------+
+                        |1|0|0|1|1|S|S|S|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : Z, S, P, CY, AC
+        */
+        case 0x98:
+            printf("%04x\tSBB B\t(A) <= (A) - (CY) - (B)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x99:
+            printf("%04x\tSBB C\t(A) <= (A) - (CY) - (C)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x9A:
+            printf("%04x\tSBB D\t(A) <= (A) - (CY) - (D)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x9B:
+            printf("%04x\tSBB E\t(A) <= (A) - (CY) - (E)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x9C:
+            printf("%04x\tSBB H\t(A) <= (A) - (CY) - (H)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x9D:
+            printf("%04x\tSBB L\t(A) <= (A) - (CY) - (L)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x9F:
+            printf("%04x\tSBB A\t(A) <= (A) - (CY) - (A)", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Substract Memory with Borrow
+            Explanation : The contents of the memory location whose address is contained in the H
+                and L registers and the content of the CY flag are both substracted from the accumulator.
+                The result is placed in the accumulator
+            Encoding :  +---------------+
+                        |1|0|0|1|1|1|1|0|
+                        +---------------+
+            Cycles / States : 2 / 7
+            Flags : Z, S, P, CY, AC
+        */
+        case 0x8E:
+            printf("%04x\tSBB M\t(A) <= (A) - ((H)(L)) - (CY)", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Substract Immediate with Borrow
+            Explanation : The contents of the second byte of the instruction and the content of the CY flag are
+                both substracted from the contents of the accumulator. The result is placed in the accumulator.
+            Encoding :  +---------------+
+                        |1|1|0|1|1|1|1|0|
+                        +---------------+
+                        |      DATA     |
+                        +---------------+
+            Cycles / States : 2 / 7
+            Flags : Z, S, P, CY, AC
+        */
+        case 0xDE:
+            printf("%04x\tSBI d8\t(A) <= (A) - #$%02x - (CY)", *opcode, opcode[2]);
+            op_bytes = 2;
+            break;
+
         default:
             printf("Instruction non prise en charge : %04x", *opcode);
             break;
