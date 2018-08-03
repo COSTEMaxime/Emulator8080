@@ -115,7 +115,6 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Cycles / States : 1 / 5
             Flags : None
         */
-        #pragma region
         case 0x40:
             printf("%04x\tMOV B, B\t(B) <= (B)", *opcode);
             op_bytes = 1;
@@ -312,7 +311,6 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             printf("%04x\tMOV A, A\t(A) <= (A)", *opcode);
             op_bytes = 1;
             break;
-        #pragma endregion
         
         /*
             Name : Move from memory
@@ -324,7 +322,6 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Cycles / States : 2 / 7
             Flags : None
         */
-        #pragma region
         case 0x46:
             printf("%04x\tMOV B, M\t(B) <= ((H)(L))", *opcode);
             op_bytes = 1;
@@ -353,7 +350,6 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             printf("%04x\tMOV A, M\t(A) <= ((H)(L))", *opcode);
             op_bytes = 1;
             break;
-        #pragma endregion
 
         /*
             Name : Move to memory
@@ -365,7 +361,6 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Cycles / States : 2 / 7
             Flags : None
         */
-        #pragma region
         case 0x70:
             printf("%04x\tMOV M, B\t((H)(L)) <= (B)", *opcode);
             op_bytes = 1;
@@ -394,7 +389,6 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             printf("%04x\tMOV M, A\t((H)(L)) <= (A)", *opcode);
             op_bytes = 1;
             break;
-        #pragma endregion
 
         /*
             Name : Move immediate
@@ -409,7 +403,6 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Cycles / States : 2 / 7
             Flags : None
         */
-        #pragma region
         case 0x06:
             printf("%04x\tMVI B, d8\t(B) <= #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
@@ -438,7 +431,6 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             printf("%04x\tMVI A, d8\t(A) <= #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
-        #pragma endregion
 
         /*
             Name : Move to memory immediate
@@ -472,7 +464,6 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Cycles / States : 3 / 10
             Flags : None
         */
-       #pragma region
         case 0x01:
             printf("%04x\tLXI B, d16\t(B) <= #$%02x, (C) <= #$%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
@@ -489,7 +480,6 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             printf("%04x\tLXI SP, d16\t(SPH) <= #$%02x, (SPL) <= #$%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
-        #pragma endregion
 
         /*
             Name : Load Accumulator direct
