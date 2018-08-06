@@ -689,7 +689,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xC6:
-            printf("%04x\tADI d8\t(A) <= (A) + #$%02x", *opcode, opcode[2]);
+            printf("%04x\tADI d8\t(A) <= (A) + #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
 
@@ -761,7 +761,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xCE:
-            printf("%04x\tACI d8\t(A) <= (A) + #$%02x + (CY)", *opcode, opcode[2]);
+            printf("%04x\tACI d8\t(A) <= (A) + #$%02x + (CY)", *opcode, opcode[1]);
             op_bytes = 2;
             break;
 
@@ -833,7 +833,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xD6:
-            printf("%04x\tSUI d8\t(A) <= (A) - #$%02x", *opcode, opcode[2]);
+            printf("%04x\tSUI d8\t(A) <= (A) - #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
 
@@ -905,7 +905,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xDE:
-            printf("%04x\tSBI d8\t(A) <= (A) - #$%02x - (CY)", *opcode, opcode[2]);
+            printf("%04x\tSBI d8\t(A) <= (A) - #$%02x - (CY)", *opcode, opcode[1]);
             op_bytes = 2;
             break;
 
@@ -1183,7 +1183,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xE6:
-            printf("%04x\tANI d8\t(A) <= (A) && #$%02x", *opcode, opcode[2]);
+            printf("%04x\tANI d8\t(A) <= (A) && #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
 
@@ -1254,7 +1254,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xEE:
-            printf("%04x\tXRI d8\t(A) <= (A) ^ #$%02x", *opcode, opcode[2]);
+            printf("%04x\tXRI d8\t(A) <= (A) ^ #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
 
