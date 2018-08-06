@@ -26,6 +26,12 @@
     #           : the actual value
     ()          : the value at the address
 
+    <=          : is transfered to
+    <=>         : is exchanged with
+    &&          : logical AND
+    ||          : inclusive OR
+    ^           : exclusive OR
+
     ===== DDD / SSS =====
 
     The bit pattern (DDD = Destination / SSS = Source) designating one of the registers :
