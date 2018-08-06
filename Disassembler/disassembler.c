@@ -1162,7 +1162,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Encoding :  +---------------+
                         |1|0|1|0|0|1|1|0|
                         +---------------+
-            Cycles / States : 1 / 4
+            Cycles / States : 2 / 7
             Flags : Z, S, P, CY, AC
         */
         case 0xA6:
@@ -1173,7 +1173,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
         /*
             Name : AND Immediate
             Explanation : The content of the second byte of the instruction is logically anded with the content of the accumulator.
-                The result is placed in the accumulator. The CY and AC flag is cleared.
+                The result is placed in the accumulator. The CY and AC flags are cleared.
             Encoding :  +---------------+
                         |1|1|1|0|0|1|1|0|
                         +---------------+
@@ -1184,6 +1184,77 @@ int disassemble8080(unsigned char *code_buffer, int pc)
         */
         case 0xE6:
             printf("%04x\tANI d8\t(A) <= (A) && #$%02x", *opcode, opcode[2]);
+            op_bytes = 2;
+            break;
+
+        /*
+            Name : Exclusive OR Register
+            Explanation : The content of register r is exclusive-or'd with the content of the accumulator. The result is
+                placed in the accumulator. The CY and AC flags are cleared.
+            Encoding :  +---------------+
+                        |1|0|1|0|1|S|S|S|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : Z, S, P, CY, AC
+        */
+        case 0xA8:
+            printf("%04x\tXRA B\t(A) <= (A) ^ (B)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xA9:
+            printf("%04x\tXRA C\t(A) <= (A) ^ (C)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xAA:
+            printf("%04x\tXRA D\t(A) <= (A) ^ (D)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xAB:
+            printf("%04x\tXRA E\t(A) <= (A) ^ (E)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xAC:
+            printf("%04x\tXRA H\t(A) <= (A) ^ (H)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xAD:
+            printf("%04x\tXRA L\t(A) <= (A) ^ (L)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xAF:
+            printf("%04x\tXRA A\t(A) <= (A) ^ (A)", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Exclusive OR Memory
+            Explanation : The content of the memory location whose address is contained in the H and L registers is exclusive-OR'd
+                with the content of the accumulator. The result is placed in the accumulator. The CY and AC flags are cleared.
+            Encoding :  +---------------+
+                        |1|0|1|0|1|1|1|0|
+                        +---------------+
+            Cycles / States : 2 / 7
+            Flags : Z, S, P, CY, AC
+        */
+        case 0xAE:
+            printf("%04x\tXRA M\t(A) <= (A) ^ ((H)(L))", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Exclusive OR Immediate
+            Explanation : The content of the second byte of the instruction is exclusive-OR'd with the content of the accumulator.
+                The result is placed in the accumulator. The CY and AC flag are cleared.
+            Encoding :  +---------------+
+                        |1|1|1|0|1|1|1|0|
+                        +---------------+
+                        |      DATA     |
+                        +---------------+
+            Cycles / States : 2 / 7
+            Flags : Z, S, P, CY, AC
+        */
+        case 0xEE:
+            printf("%04x\tXRI d8\t(A) <= (A) ^ #$%02x", *opcode, opcode[2]);
             op_bytes = 2;
             break;
 
