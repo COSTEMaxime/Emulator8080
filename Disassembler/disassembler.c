@@ -1116,6 +1116,77 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             op_bytes = 1;
             break;
 
+        /*
+            Name : AND Register
+            Explanation : The content of register r is logically anded with the content of the accumulator. The result is
+                placed in the accumulator. The CY flag is cleared.
+            Encoding :  +---------------+
+                        |1|0|1|0|0|S|S|S|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : Z, S, P, CY, AC
+        */
+        case 0xA0:
+            printf("%04x\tANA B\t(A) <= (A) && (B)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xA1:
+            printf("%04x\tANA C\t(A) <= (A) && (C)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xA2:
+            printf("%04x\tANA D\t(A) <= (A) && (D)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xA3:
+            printf("%04x\tANA E\t(A) <= (A) && (E)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xA4:
+            printf("%04x\tANA H\t(A) <= (A) && (H)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xA5:
+            printf("%04x\tANA L\t(A) <= (A) && (L)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xA7:
+            printf("%04x\tANA A\t(A) <= (A) && (A)", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : AND Memory
+            Explanation : The content of the memory location whose address is contained in the H and L registers is logically anded
+                with the content of the accumulator. The result is placed in the accumulator. The CY flag is cleared.
+            Encoding :  +---------------+
+                        |1|0|1|0|0|1|1|0|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : Z, S, P, CY, AC
+        */
+        case 0xA6:
+            printf("%04x\tANA M\t(A) <= (A) && ((H)(L))", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : AND Immediate
+            Explanation : The content of the second byte of the instruction is logically anded with the content of the accumulator.
+                The result is placed in the accumulator. The CY and AC flag is cleared.
+            Encoding :  +---------------+
+                        |1|1|1|0|0|1|1|0|
+                        +---------------+
+                        |      DATA     |
+                        +---------------+
+            Cycles / States : 2 / 7
+            Flags : Z, S, P, CY, AC
+        */
+        case 0xE6:
+            printf("%04x\tANI d8\t(A) <= (A) && #$%02x", *opcode, opcode[2]);
+            op_bytes = 2;
+            break;
+
         default:
             printf("Instruction non prise en charge : %04x", *opcode);
             break;
