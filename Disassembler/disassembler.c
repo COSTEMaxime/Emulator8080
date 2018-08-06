@@ -1325,7 +1325,79 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xF6:
-            printf("%04x\tORI d8\t(A) <= (A) || #$%02x", *opcode, opcode[2]);
+            printf("%04x\tORI d8\t(A) <= (A) || #$%02x", *opcode, opcode[1]);
+            op_bytes = 2;
+            break;
+
+        /*
+            Name : Compare Register
+            Explanation : The content of register r is substracted from the accumulator. The accumulator remains unchanged. The condition
+                flags are set as a result of the substraction. The Z flag is set to 1 if (A) = (r). The CY flag is set to 1 if (A) < (r).
+            Encoding :  +---------------+
+                        |1|0|1|1|1|S|S|S|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : Z, S, P, CY, AC
+        */
+        case 0xB8:
+            printf("%04x\tCMP B\t(A) - (B)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xB9:
+            printf("%04x\tCMP C\t(A) - (C)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xBA:
+            printf("%04x\tCMP D\t(A) - (D)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xBB:
+            printf("%04x\tCMP E\t(A) - (E)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xBC:
+            printf("%04x\tCMP H\t(A) - (H)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xBD:
+            printf("%04x\tCMP L\t(A) - (L)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xBF:
+            printf("%04x\tCMP A\t(A) - (A)", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Compare Memory
+            Explanation : The content of the memory location whose address is contained in the H and L registers is substracted from the accumulator.
+                The accumulator remains unchanged. The condition flags are set as a result of the substraction.
+                The Z flag is set to 1 if (A) = ((H)(L)). The CY flag is set to 1 if (A) < ((H)(L)).
+            Encoding :  +---------------+
+                        |1|0|1|1|1|1|1|0|
+                        +---------------+
+            Cycles / States : 2 / 7
+            Flags : Z, S, P, CY, AC
+        */
+        case 0xBE:
+            printf("%04x\tCMP M\t(A) - ((H)(L))", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Compare Immediate
+            Explanation : The content of the second byte of the instruction is substracted from the accumulator. The accumulator remains unchanged.
+                The condition flags are set as a result of the substraction. The Z flag is set to 1 if (A) = (byte2). The CY flag is set to 1 if (A) < (byte2).
+            Encoding :  +---------------+
+                        |1|1|1|1|1|1|1|0|
+                        +---------------+
+                        |      DATA     |
+                        +---------------+
+            Cycles / States : 2 / 7
+            Flags : Z, S, P, CY, AC
+        */
+        case 0xFE:
+            printf("%04x\tCPI d8\t(A) - #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
 
