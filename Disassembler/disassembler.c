@@ -1258,6 +1258,77 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             op_bytes = 2;
             break;
 
+        /*
+            Name : OR Register
+            Explanation : The content of register r is inclusive-or'd with the content of the accumulator. The result is
+                placed in the accumulator. The CY and AC flags are cleared.
+            Encoding :  +---------------+
+                        |1|0|1|1|0|S|S|S|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : Z, S, P, CY, AC
+        */
+        case 0xB0:
+            printf("%04x\tORA B\t(A) <= (A) || (B)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xB1:
+            printf("%04x\tORA C\t(A) <= (A) || (C)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xB2:
+            printf("%04x\tORA D\t(A) <= (A) || (D)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xB3:
+            printf("%04x\tORA E\t(A) <= (A) || (E)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xB4:
+            printf("%04x\tORA H\t(A) <= (A) || (H)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xB5:
+            printf("%04x\tORA L\t(A) <= (A) || (L)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xB7:
+            printf("%04x\tORA A\t(A) <= (A) || (A)", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : OR Memory
+            Explanation : The content of the memory location whose address is contained in the H and L registers is inclusive-OR'd
+                with the content of the accumulator. The result is placed in the accumulator. The CY and AC flags are cleared.
+            Encoding :  +---------------+
+                        |1|0|1|1|0|1|1|0|
+                        +---------------+
+            Cycles / States : 2 / 7
+            Flags : Z, S, P, CY, AC
+        */
+        case 0xB6:
+            printf("%04x\tORA M\t(A) <= (A) || ((H)(L))", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : OR Immediate
+            Explanation : The content of the second byte of the instruction is inclusive-OR'd with the content of the accumulator.
+                The result is placed in the accumulator. The CY and AC flag are cleared.
+            Encoding :  +---------------+
+                        |1|1|1|1|0|1|1|0|
+                        +---------------+
+                        |      DATA     |
+                        +---------------+
+            Cycles / States : 2 / 7
+            Flags : Z, S, P, CY, AC
+        */
+        case 0xF6:
+            printf("%04x\tORI d8\t(A) <= (A) || #$%02x", *opcode, opcode[2]);
+            op_bytes = 2;
+            break;
+
         default:
             printf("Instruction non prise en charge : %04x", *opcode);
             break;
