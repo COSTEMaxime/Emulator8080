@@ -903,6 +903,213 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             op_bytes = 2;
             break;
 
+        /*
+            Name : Increment Register
+            Explanation : The content of register r is incremented by one.
+                Note: all condition flags except CY are affected
+            Encoding :  +---------------+
+                        |0|0|D|D|D|1|0|0|
+                        +---------------+
+            Cycles / States : 1 / 5
+            Flags : Z, S, P, AC
+        */
+        case 0x04:
+            printf("%04x\tINR B\t(B) <= (B) + 1", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x0C:
+            printf("%04x\tINR C\t(C) <= (C) + 1", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x14:
+            printf("%04x\tINR D\t(D) <= (D) + 1", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x1C:
+            printf("%04x\tINR E\t(E) <= (E) + 1", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x24:
+            printf("%04x\tINR H\t(H) <= (H) + 1", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x2C:
+            printf("%04x\tINR L\t(L) <= (L) + 1", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x3C:
+            printf("%04x\tINR A\t(A) <= (A) + 1", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Increment Memory
+            Explanation : The content of the memory location whose address is contained in the H and L
+                registers is incremented by one. Note: all condition flags except CY are affected
+            Encoding :  +---------------+
+                        |0|0|1|1|0|1|0|0|
+                        +---------------+
+            Cycles / States : 3 / 10
+            Flags : Z, S, P, AC
+        */
+        case 0x34:
+            printf("%04x\tINR M\t((H)(L)) <= ((H)(L)) + 1", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Decrement Register
+            Explanation : The content of register r is decremented by one.
+                Note: all condition flags except CY are affected
+            Encoding :  +---------------+
+                        |0|0|D|D|D|1|0|1|
+                        +---------------+
+            Cycles / States : 1 / 5
+            Flags : Z, S, P, AC
+        */
+        case 0x05:
+            printf("%04x\tDCR B\t(B) <= (B) - 1", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x0D:
+            printf("%04x\tDCR C\t(C) <= (C) - 1", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x15:
+            printf("%04x\tDCR D\t(D) <= (D) - 1", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x1D:
+            printf("%04x\tDCR E\t(E) <= (E) - 1", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x25:
+            printf("%04x\tDCR H\t(H) <= (H) - 1", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x2D:
+            printf("%04x\tDCR L\t(L) <= (L) - 1", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x3D:
+            printf("%04x\tDCR A\t(A) <= (A) + 1", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Decrement Memory
+            Explanation : The content of the memory location whose address is contained in the H and L
+                registers is decremented by one. Note: all condition flags except CY are affected
+            Encoding :  +---------------+
+                        |0|0|1|1|0|1|0|1|
+                        +---------------+
+            Cycles / States : 3 / 10
+            Flags : Z, S, P, AC
+        */
+        case 0x35:
+            printf("%04x\tDCR M\t((H)(L)) <= ((H)(L)) - 1", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Increment Register Pair
+            Explanation : The content of the register pair rp is incremented by one. Note: no condition are affected
+            Encoding :  +---------------+
+                        |0|0|R|P|0|0|1|1|
+                        +---------------+
+            Cycles / States : 1 / 5
+            Flags : None
+        */
+        case 0x03:
+            printf("%04x\tINX B\t(B)(C) <= (B)(C) + 1", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x13:
+            printf("%04x\tINX D\t(D)(E) <= (D)(E) + 1", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x23:
+            printf("%04x\tINX H\t(H)(L) <= (H)(L) + 1", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x33:
+            printf("%04x\tINX SP\t(SP) <= (SP) + 1", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Decrement Register Pair
+            Explanation : The content of the register pair rp is decremented by one. Note: no condition are affected
+            Encoding :  +---------------+
+                        |0|0|R|P|1|0|1|1|
+                        +---------------+
+            Cycles / States : 1 / 5
+            Flags : None
+        */
+        case 0x0B:
+            printf("%04x\tDCX B\t(B)(C) <= (B)(C) - 1", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x1B:
+            printf("%04x\tDCX D\t(D)(E) <= (D)(E) - 1", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x2B:
+            printf("%04x\tDCX H\t(H)(L) <= (H)(L) - 1", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x3B:
+            printf("%04x\tDCX SP\t(SP) <= (SP) - 1", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Add Register Pair to H and L
+            Explanation : The content of the register pair rp is added to the content of the register pair H and L.
+                The result is placed in the register pair H and L. Note: only the CY condition flag is affected.
+                It is set if there is a carry out of the double precision add, otherwise it is reset.
+            Encoding :  +---------------+
+                        |0|0|R|P|1|0|0|1|
+                        +---------------+
+            Cycles / States : 3 / 10
+            Flags : CY
+        */
+        case 0x09:
+            printf("%04x\tDAD B\t(H)(L) <= (H)(L) + (B)(C)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x19:
+            printf("%04x\tDAD D\t(H)(L) <= (H)(L) + (D)(E)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x29:
+            printf("%04x\tDAD H\t(H)(L) <= (H)(L) + (H)(L)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0x39:
+            printf("%04x\tDAD SP\t(H)(L) <= (H)(L) + (SP)", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Decimal Ajust Accumulator
+            Explanation : The eight-bit number in the accumulator is adjusted to form two four-bit Binary-Coded-Decimal
+                digits by the following process :
+                    1. If the value of the least significant 4 bits of the accumulator is greater than 9 or is the
+                        AC flag is set, 6 is added to the accumulator;
+                    2. If the value of the most significant 4 bits of the accumulator is now greater than 9, or if
+                        the CY flag is set, 6 is added to the most significant 4 bits of the accumulator.
+            Encoding :  +---------------+
+                        |0|0|1|0|0|1|1|1|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : Z, S, P, CY, AC
+        */
+        case 0x27:
+            printf("%04x\tDAA\tDecimal Adjust Accumulator", *opcode);
+            op_bytes = 1;
+            break;
+
         default:
             printf("Instruction non prise en charge : %04x", *opcode);
             break;
