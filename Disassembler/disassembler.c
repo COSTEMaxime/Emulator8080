@@ -1401,6 +1401,66 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             op_bytes = 2;
             break;
 
+         /*
+            Name : Rotate Left
+            Explanation : The content of the accumulator is rotated left one position. The low order bit and the CY flag are both set to the value
+                shifted out of the high order bit position. Only the CY flag is affected
+            Encoding :  +---------------+
+                        |0|0|0|0|0|1|1|1|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : CY
+        */
+        case 0x07:
+            printf("%04x\tRLC\t(An+1) <= (An), (A0) <= (A7), (CY) <= (A7)", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Rotate Right
+            Explanation : The content of the accumulator is rotated right one position. The high order bit and the CY flag are both set to the value
+                shifted out of the low order bit position. Only the CY flag is affected
+            Encoding :  +---------------+
+                        |0|0|0|0|1|1|1|1|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : CY
+        */
+        case 0x0F:
+            printf("%04x\tRRC\t(An) <= (An+1), (A7) <= (A0), (CY) <= (A0)", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Rotate Left through Carry
+            Explanation : The content of the accumulator is rotated left one position though the CY flag. The low order bit is set equal to the CY flag
+                and the CY flag is set to the value shifted out of the high order bit. Only the CY flag is affected
+            Encoding :  +---------------+
+                        |0|0|0|1|0|1|1|1|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : CY
+        */
+        case 0x17:
+            printf("%04x\tRAL\t(An+1) <= (An), (CY) <= (A7), (A0) <= (CY)", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Rotate Right through Carry
+            Explanation : TThe content of the accumulator is rotated right one position though the CY flag. The high order bit is set equal to the CY flag
+                and the CY flag is set to the value shifted out of the low order bit. Only the CY flag is affected
+            Encoding :  +---------------+
+                        |0|0|0|1|1|1|1|1|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : CY
+        */
+        case 0x1F:
+            printf("%04x\tRAR\t(An) <= (An+1), (CY) <= (A0), (A7) <= (CY)", *opcode);
+            op_bytes = 1;
+            break;
+
         default:
             printf("Instruction non prise en charge : %04x", *opcode);
             break;
