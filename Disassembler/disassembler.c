@@ -113,6 +113,9 @@ int disassemble8080(unsigned char *code_buffer, int pc)
     switch (*opcode)
     {
         /*
+            Data Transfer Group
+        */
+        /*
             Name : Move Register
             Explanation : The content of register r2 is moved to register r1
             Encoding :  +---------------+
@@ -621,6 +624,10 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             op_bytes = 1;
             break;
 
+
+        /*
+            Arithmetic Group
+        */
         /*
             Name : Add Register
             Explanation : The contents of register r is added to the content of the accumulator.
@@ -1116,6 +1123,10 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             op_bytes = 1;
             break;
 
+
+        /*
+            Logical Group
+        */
         /*
             Name : AND Register
             Explanation : The content of register r is logically anded with the content of the accumulator. The result is
@@ -1790,6 +1801,11 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             printf("%04x\tPCHL\t(PCH) <= (H), (PCL) <= (L)", *opcode);
             op_bytes = 1;
             break;
+
+
+    /*
+        Stack, I/O, and Machine Control Group
+    */
 
         default:
             printf("Instruction non prise en charge : %04x", *opcode);
