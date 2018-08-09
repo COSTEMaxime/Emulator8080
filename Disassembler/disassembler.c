@@ -1542,6 +1542,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0xC3:
+        case 0xCB:
             printf("%04x\tJMP addr\t(PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
@@ -1590,6 +1591,78 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             break;
         case 0xFA:
             printf("%04x\tJM addr\tif(S = 1): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+
+        /*
+            Name : Call
+            Explanation :
+                -The high-order eight bits of the next instruction address are moved to the memory location whose address is one less than the content of register SP.
+                -The low-order eight bits of the next instruction address are moved to the memory location whose address is two less than the content of register SP.
+                -The content of regoster SP is decremented by 2. => push the address of the next instruction on the stack
+                -Control is transfered to the instruction whose address is specified in byte 2 and byte 3 of the current instruction.
+            Encoding :  +---------------+
+                        |1|1|0|0|1|1|0|1|
+                        +---------------+
+                        | low-order ADDR|
+                        +---------------+
+                        |high-order ADDR|
+                        +---------------+
+            Cycles / States : 5 / 17
+            Flags : None
+        */
+        case 0xCD:
+        case 0xDD:
+        case 0xED:
+        case 0xFD:
+            printf("%04x\tCALL addr\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+
+        /*
+            Name : Conditionnal Call
+            Explanation : If the specified condition is true, the actions specified in the CALL instruction are performed;
+                otherwise, control continues sequentially.
+            Encoding :  +---------------+
+                        |1|1|C|C|C|1|0|0|
+                        +---------------+
+                        | low-order ADDR|
+                        +---------------+
+                        |high-order ADDR|
+                        +---------------+
+            Cycles / States : 11 / 17
+            Flags : None
+        */
+        case 0xC4:
+            printf("%04x\tCNZ addr\tif(Z = 0): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+        case 0xCC:
+            printf("%04x\tCZ addr\tif(Z = 1): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+        case 0xD4:
+            printf("%04x\tCNC addr\tif(CY = 0): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+        case 0xDC:
+            printf("%04x\tCC addr\tif(CY = 1): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+        case 0xE4:
+            printf("%04x\tCPO addr\tif(P = 0): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+        case 0xEC:
+            printf("%04x\tCPE addr\tif(P = 1): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+        case 0xF4:
+            printf("%04x\tCP addr\tif(S = 0): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+        case 0xFC:
+            printf("%04x\tCM addr\tif(S = 1): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
 
