@@ -1727,6 +1727,70 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             op_bytes = 1;
             break;
 
+        /*
+            Name : Restart
+            Explanation :
+                -The high-order eight bits of the next instruction address are moved to the memory location whose address is one less than the content of the SP.
+                -The low-order eight bits of the next instruction address are moved to the memory location whose address is two less than the content of the SP.
+                -The content of register SP is decremented by two. => PUSH the PC on the stack
+                -Control is transfered to the instruction whose address is eight times the content of NNN.
+
+                This is used to jump to a specific vector location. These vector addresses contain (mainly) executable code (AKA a jump instruction to an interrupt subroutine).
+            Encoding :  +---------------+
+                        |1|1|N|N|N|1|1|1|
+                        +---------------+
+            Cycles / States : 3 / 11
+            Flags : None
+        */
+        case 0xC7:
+            printf("%04x\tRST 0\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b000", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xCF:
+            printf("%04x\tRST 1\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b001", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xD7:
+            printf("%04x\tRST 2\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b010", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xDF:
+            printf("%04x\tRST 3\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b011", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xE7:
+            printf("%04x\tRST 4\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b100", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xEF:
+            printf("%04x\tRST 5\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b101", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xF7:
+            printf("%04x\tRST 6\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b110", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xFF:
+            printf("%04x\tRST 7\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b111", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Jump H and L direct / Move H and L to PC
+            Explanation :
+                -The content register H is moved to the high-order eight bits of register PC.
+                -The content register L is moved to the low-order eight bits of register PC.
+            Encoding :  +---------------+
+                        |1|1|1|0|1|0|0|1|
+                        +---------------+
+            Cycles / States : 1 / 5
+            Flags : None
+        */
+        case 0xE9:
+            printf("%04x\tPCHL\t(PCH) <= (H), (PCL) <= (L)", *opcode);
+            op_bytes = 1;
+            break;
+
         default:
             printf("Instruction non prise en charge : %04x", *opcode);
             break;
