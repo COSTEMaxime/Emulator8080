@@ -22,6 +22,7 @@
     port        : 8-bits address of an I/O device
     PC          : 16-bits program counter register (PCH and PCL for the high-order and low-order 8 bits)
     SP          : 16-bits stack pointer register (SPH and SPL for the high-order and low-order 8 bits)
+    F           : 8-bits flags register
 
     #           : the actual value
     ()          : the value at the address
@@ -87,9 +88,6 @@
     Not used - Always one
     CY - Carry : set if the last addition resulted in a carry or if the last subtraction resulted in a borrow
 
-    TODO: modify flags
-        Single byte instruction / Two byte instructions
-        Symbols
 */
 
 
