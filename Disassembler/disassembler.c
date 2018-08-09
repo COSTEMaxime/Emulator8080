@@ -1666,6 +1666,67 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             op_bytes = 3;
             break;
 
+        /*
+            Name : Return
+            Explanation :
+                -The content of the memory location whose address is specified in register SP is moved to the low-order eight bits of register PC.
+                -The content of the memory location whose address is one more than the content of register SP is mover to the high-order eight bits of register PC.
+                -The content of register SP is incremented by two. => POP the address on top of the stack into the register PC.
+            Encoding :  +---------------+
+                        |1|1|0|0|1|0|1|1|
+                        +---------------+
+            Cycles / States : 3 / 10
+            Flags : None
+        */
+        case 0xC9:
+        case 0xD9:
+            printf("%04x\tRET\t(PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Conditionnal Return
+            Explanation : If the specified condition is true, the actions specified in the RET instruction are performed;
+                otherwise, control continues sequentially.
+            Encoding :  +---------------+
+                        |1|1|C|C|C|0|0|0|
+                        +---------------+
+            Cycles / States : 5 / 11
+            Flags : None
+        */
+        case 0xC0:
+            printf("%04x\tRNZ\tif(Z = 0): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xC8:
+            printf("%04x\tRZ\tif(Z = 1): ((PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xD0:
+            printf("%04x\tRNC\tif(CY = 0): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xD8:
+            printf("%04x\tRC\tif(CY = 1): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xE0:
+            printf("%04x\tRPO\tif(P = 0): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xE8:
+            printf("%04x\tRPE\tif(P = 1): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xF0:
+            printf("%04x\tRP\tif(S = 0): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xF8:
+            printf("%04x\tRM\tif(S = 1): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            op_bytes = 1;
+            break;
+
         default:
             printf("Instruction non prise en charge : %04x", *opcode);
             break;
