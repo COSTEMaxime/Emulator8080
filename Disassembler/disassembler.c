@@ -1528,6 +1528,70 @@ int disassemble8080(unsigned char *code_buffer, int pc)
                 +------+-----------+------+-----+
 
         */
+       /*
+            Name : Jump
+            Explanation : Control is transfered to the instruction whose addresss is specified in byte 3 and byte 2 of the current instruction.
+            Encoding :  +---------------+
+                        |1|1|0|0|0|0|1|1|
+                        +---------------+
+                        | low-order ADDR|
+                        +---------------+
+                        |high-order ADDR|
+                        +---------------+
+            Cycles / States : 3 / 10
+            Flags : None
+        */
+        case 0xC3:
+            printf("%04x\tJMP addr\t(PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+
+        /*
+            Name : Conditionnal Jump
+            Explanation : If the specified condition is true, control is transfered to the instruction whose addresss is specified in byte 3 and byte 2
+                of the current instruction; otherwise, control continues sequentially.
+            Encoding :  +---------------+
+                        |1|1|C|C|C|0|1|0|
+                        +---------------+
+                        | low-order ADDR|
+                        +---------------+
+                        |high-order ADDR|
+                        +---------------+
+            Cycles / States : 3 / 10
+            Flags : None
+        */
+        case 0xC2:
+            printf("%04x\tJNZ addr\tif(Z = 0): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+        case 0xCA:
+            printf("%04x\tJZ addr\tif(Z = 1): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+        case 0xD2:
+            printf("%04x\tJNC addr\tif(CY = 0): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+        case 0xDA:
+            printf("%04x\tJC addr\tif(CY = 1): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+        case 0xE2:
+            printf("%04x\tJPO addr\tif(P = 0): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+        case 0xEA:
+            printf("%04x\tJPE addr\tif(P = 1): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+        case 0xF2:
+            printf("%04x\tJP addr\tif(S = 0): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
+        case 0xFA:
+            printf("%04x\tJM addr\tif(S = 1): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            op_bytes = 3;
+            break;
 
         default:
             printf("Instruction non prise en charge : %04x", *opcode);
