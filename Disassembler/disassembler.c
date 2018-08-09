@@ -1801,9 +1801,51 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             break;
 
 
-    /*
-        Stack, I/O, and Machine Control Group
-    */
+        /*
+            Stack, I/O, and Machine Control Group
+        */
+       /*
+            Name : Push
+            Explanation :
+                -The content of the high-order register of register pair is moved to the memory location whose address is one less than the content of register SP.
+                -The content of the low-order register of register pair is moved to the memory location whose address is two less than the content of register SP.
+                -The content of register SP is decremented by 2.
+                Note: register pair rp = SP may not be specified.
+            Encoding :  +---------------+
+                        |1|1|R|P|0|1|0|1|
+                        +---------------+
+            Cycles / States : 3 / 11
+            Flags : None
+        */
+        case 0xC5:
+            printf("%04x\tPUSH B\t((SP) - 1) <= (C), ((SP) - 2) <= (B)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xD5:
+            printf("%04x\tPUSH E\t((SP) - 1) <= (D), ((SP) - 2) <= (E)", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xE5:
+            printf("%04x\tPUSH H\t((SP) - 1) <= (H), ((SP) - 2) <= (L)", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Push Processor Status Word
+            Explanation :
+                -The content register A is moved to the memory location whose address is one less than the content of register SP.
+                -The content register F (flags) is moved to the memory location whose address is two less than the content of register SP.
+                -The content of register SP is decremented by 2.
+            Encoding :  +---------------+
+                        |1|1|1|1|0|1|0|1|
+                        +---------------+
+            Cycles / States : 3 / 11
+            Flags : None
+        */
+        case 0xF5:
+            printf("%04x\tPUSH B\t((SP) - 1) <= (A), ((SP) - 2) <= (F)", *opcode);
+            op_bytes = 1;
+            break;
 
         default:
             printf("Instruction non prise en charge : %04x", *opcode);
