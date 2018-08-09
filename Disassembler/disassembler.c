@@ -1503,6 +1503,32 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             op_bytes = 1;
             break;
 
+
+        /*
+            Branch Group
+
+            Specifications:
+                - Condition flags are not affected by any instructions in the group
+                - Two types of branch instructions :
+                    - Conditionnal : Depend on the content of one of the flags
+                    - Unconditionnal : Simply perform an operation on the Program Counter (PC)
+
+            Conditions :
+                +------+-----------+------+-----+
+                | NAME |  VERBOSE  | FLAG | CCC |
+                +------+-----------+------+-----+
+                |  NZ  | Not Zero  |Z  = 0| 000 |
+                |   Z  |     Zero  |Z  = 1| 001 |
+                |  NC  | No Carry  |CY = 0| 010 |
+                |   C  |    Carry  |CY = 1| 011 |
+                |  PO  |Parity odd |P  = 0| 100 |
+                |  PE  |Parity even|P  = 1| 101 |
+                |   P  | Plus sign |S  = 0| 110 |
+                |   M  |Minus sign |S  = 1| 111 |
+                +------+-----------+------+-----+
+
+        */
+
         default:
             printf("Instruction non prise en charge : %04x", *opcode);
             break;
