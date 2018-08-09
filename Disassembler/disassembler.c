@@ -1843,7 +1843,52 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0xF5:
-            printf("%04x\tPUSH B\t((SP) - 1) <= (A), ((SP) - 2) <= (F)", *opcode);
+            printf("%04x\tPUSH PSW\t((SP) - 1) <= (A), ((SP) - 2) <= (F), (SP) <= (SP) - 2", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Pop
+            Explanation :
+                -The content of the memory location, whose address is specified by the content of register SP,
+                    is moved to the low-order register of register pair rp.
+                -The content of the memory location, whose address is one more than the content of register SP,
+                    is moved to the high-order register of register pair rp.
+                -The content of register SP is incremented by 2.
+                Note: register pair rp = SP may not be specified.
+            Encoding :  +---------------+
+                        |1|1|R|P|0|0|0|1|
+                        +---------------+
+            Cycles / States : 3 / 10
+            Flags : None
+        */
+        case 0xC1:
+            printf("%04x\tPOP B\t(C) <= ((SP)), (B) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xD1:
+            printf("%04x\tPOP D\t(D) <= ((SP)), (E) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            op_bytes = 1;
+            break;
+        case 0xE1:
+            printf("%04x\tPOP H\t(H) <= ((SP)), (L) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Pop Processor Status Word
+            Explanation :
+                -The content of the memory location whose address is specified by the content of register SP is used to restore the condition flags.
+                -The content of the memory location whose address is one more than the content of register SP is moved to register A.
+                -The content of register SP is incremented by 2.
+            Encoding :  +---------------+
+                        |1|1|1|1|0|0|0|1|
+                        +---------------+
+            Cycles / States : 3 / 10
+            Flags : None
+        */
+        case 0xF1:
+            printf("%04x\tPOP PSW\t(F) <= (SP), (A) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
             op_bytes = 1;
             break;
 
