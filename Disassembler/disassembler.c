@@ -1885,7 +1885,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
                         |1|1|1|1|0|0|0|1|
                         +---------------+
             Cycles / States : 3 / 10
-            Flags : None
+            Flags : Z, S, P, CY, AC
         */
         case 0xF1:
             printf("%04x\tPOP PSW\t(F) <= (SP), (A) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
