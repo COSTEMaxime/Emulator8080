@@ -1804,7 +1804,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
         /*
             Stack, I/O, and Machine Control Group
         */
-       /*
+        /*
             Name : Push
             Explanation :
                 -The content of the high-order register of register pair is moved to the memory location whose address is one less than the content of register SP.
@@ -1818,15 +1818,15 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0xC5:
-            printf("%04x\tPUSH B\t((SP) - 1) <= (C), ((SP) - 2) <= (B)", *opcode);
+            printf("%04x\tPUSH B\t((SP) - 1) <= (C), ((SP) - 2) <= (B), (SP) <= (SP) - 2", *opcode);
             op_bytes = 1;
             break;
         case 0xD5:
-            printf("%04x\tPUSH E\t((SP) - 1) <= (D), ((SP) - 2) <= (E)", *opcode);
+            printf("%04x\tPUSH E\t((SP) - 1) <= (D), ((SP) - 2) <= (E), (SP) <= (SP) - 2", *opcode);
             op_bytes = 1;
             break;
         case 0xE5:
-            printf("%04x\tPUSH H\t((SP) - 1) <= (H), ((SP) - 2) <= (L)", *opcode);
+            printf("%04x\tPUSH H\t((SP) - 1) <= (H), ((SP) - 2) <= (L), (SP) <= (SP) - 2", *opcode);
             op_bytes = 1;
             break;
 
