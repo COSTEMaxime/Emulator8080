@@ -887,7 +887,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Cycles / States : 2 / 7
             Flags : Z, S, P, CY, AC
         */
-        case 0x8E:
+        case 0x9E:
             printf("%04x\tSBB M\t(A) <= (A) - ((H)(L)) - (CY)", *opcode);
             op_bytes = 1;
             break;
@@ -1448,7 +1448,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
 
         /*
             Name : Rotate Right through Carry
-            Explanation : TThe content of the accumulator is rotated right one position though the CY flag. The high order bit is set equal to the CY flag
+            Explanation : The content of the accumulator is rotated right one position though the CY flag. The high order bit is set equal to the CY flag
                 and the CY flag is set to the value shifted out of the low order bit. Only the CY flag is affected
             Encoding :  +---------------+
                         |0|0|0|1|1|1|1|1|
@@ -1458,6 +1458,48 @@ int disassemble8080(unsigned char *code_buffer, int pc)
         */
         case 0x1F:
             printf("%04x\tRAR\t(An) <= (An+1), (CY) <= (A0), (A7) <= (CY)", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Complement Accumulator
+            Explanation : The contents of the accumulator are complemented (zero bits decome 1, one bits become 0). No flags are affected
+            Encoding :  +---------------+
+                        |0|0|1|0|1|1|1|1|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : None
+        */
+        case 0x2F:
+            printf("%04x\tCMA\t(An) <= !(An)", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Complement Carry
+            Explanation : The CY flag is complemented. No other flags are affected
+            Encoding :  +---------------+
+                        |0|0|1|1|1|1|1|1|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : CY
+        */
+        case 0x3F:
+            printf("%04x\tCMC\t(CY) <= !(CY)", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Set Carry
+            Explanation : The CY flag is set to 1. No other flags are affected
+            Encoding :  +---------------+
+                        |0|0|1|1|0|1|1|1|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : CY
+        */
+        case 0x37:
+            printf("%04x\tSTC\t(CY) <= 1", *opcode);
             op_bytes = 1;
             break;
 
