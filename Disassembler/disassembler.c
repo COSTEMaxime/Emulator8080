@@ -1888,7 +1888,37 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xF1:
-            printf("%04x\tPOP PSW\t(F) <= (SP), (A) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            printf("%04x\tPOP PSW\t(F) <= ((SP)), (A) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Exchange Stack Top with H and L
+            Explanation :
+                -The content of the L register is exchanged with the content of the memory location whose address is specified by the content of register SP.
+                -The content of the H register is exchanged with the content of the memory location whose address is one more than the content of regoster SP.
+            Encoding :  +---------------+
+                        |1|1|1|0|0|0|1|1|
+                        +---------------+
+            Cycles / States : 5 / 18
+            Flags : None
+        */
+        case 0xE3:
+            printf("%04x\tXTHL\t(L) <= ((SP)), (H) <= ((SP) + 1)", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Move HL to SP
+            Explanation : The contents of registers H and L (16 bits) are moved to register SP.
+            Encoding :  +---------------+
+                        |1|1|1|1|1|0|0|1|
+                        +---------------+
+            Cycles / States : 1 / 5
+            Flags : None
+        */
+        case 0xF9:
+            printf("%04x\tSPHL\t(SP) <= (H)(L)", *opcode);
             op_bytes = 1;
             break;
 
