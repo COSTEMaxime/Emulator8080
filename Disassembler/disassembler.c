@@ -1922,6 +1922,38 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             op_bytes = 1;
             break;
 
+        /*
+            Name : Input
+            Explanation : The data placed on the eight bit bi-directional data bus by the specified port is moved to register A.
+            Encoding :  +---------------+
+                        |1|1|0|1|1|0|1|1|
+                        +---------------+
+                        |      Port     |
+                        +---------------+
+            Cycles / States : 3 / 10
+            Flags : None
+        */
+        case 0xDB:
+            printf("%04x\tIN port\t(A) <= (data)", *opcode);
+            op_bytes = 2;
+            break;
+
+        /*
+            Name : Output
+            Explanation : The content of register A is placed on the eight bit bi-directional data bus for transmission to the specified port.
+            Encoding :  +---------------+
+                        |1|1|0|1|0|0|1|1|
+                        +---------------+
+                        |      Port     |
+                        +---------------+
+            Cycles / States : 3 / 10
+            Flags : None
+        */
+        case 0xD3:
+            printf("%04x\tOUT port\t(data) <= (A)", *opcode);
+            op_bytes = 2;
+            break;
+
         default:
             printf("Instruction non prise en charge : %04x", *opcode);
             break;
