@@ -1954,6 +1954,33 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             op_bytes = 2;
             break;
 
+        /*
+            Name : Enable Interrupts
+            Explanation : The interrupt system is enabled following the execution of the next instruction.
+            Encoding :  +---------------+
+                        |1|1|1|1|1|0|1|1|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : None
+        */
+        case 0xFB:
+            printf("%04x\tEI\tEnable interrupts", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : Disable Interrupts
+            Explanation : The interrupt system is disabled following the execution of the DI instruction.
+            Encoding :  +---------------+
+                        |1|1|1|1|1|0|0|1|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : None
+        */
+        case 0xF3:
+            printf("%04x\tDI\tDisable interrupts", *opcode);
+            op_bytes = 1;
+            break;
         default:
             printf("Instruction non prise en charge : %04x", *opcode);
             break;
