@@ -1981,6 +1981,42 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             printf("%04x\tDI\tDisable interrupts", *opcode);
             op_bytes = 1;
             break;
+
+        /*
+            Name : Halt
+            Explanation : The processor is stopped. The registers and flags are unaffected.
+            Encoding :  +---------------+
+                        |0|1|1|1|0|1|1|0|
+                        +---------------+
+            Cycles / States : 1 / 7
+            Flags : None
+        */
+        case 0x76:
+            printf("%04x\tHLT\tStop processor", *opcode);
+            op_bytes = 1;
+            break;
+
+        /*
+            Name : No op
+            Explanation : No operation is performed. The registers and flags are unaffected.
+            Encoding :  +---------------+
+                        |0|0|0|0|0|0|0|0|
+                        +---------------+
+            Cycles / States : 1 / 4
+            Flags : None
+        */
+        case 0x00:
+        case 0x08:
+        case 0x10:
+        case 0x18:
+        case 0x20:
+        case 0x28:
+        case 0x30:
+        case 0x38:
+            printf("%04x\tNOP\t", *opcode);
+            op_bytes = 1;
+            break;
+
         default:
             printf("Instruction non prise en charge : %04x", *opcode);
             break;
