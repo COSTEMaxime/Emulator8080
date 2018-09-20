@@ -2021,5 +2021,6 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             printf("Instruction non prise en charge : %04x", *opcode);
             break;
     }
+    printf("\n");
     return op_bytes;
 }
