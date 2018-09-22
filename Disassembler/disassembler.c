@@ -123,199 +123,199 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0x40:
-            printf("%04x\tMOV B, B\t(B) <= (B)", *opcode);
+            printf("%02x\tMOV B, B\t(B) <= (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x41:
-            printf("%04x\tMOV B, C\t(B) <= (C)", *opcode);
+            printf("%02x\tMOV B, C\t(B) <= (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x42:
-            printf("%04x\tMOV B, D\t(B) <= (D)", *opcode);
+            printf("%02x\tMOV B, D\t(B) <= (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x43:
-            printf("%04x\tMOV B, E\t(B) <= (E)", *opcode);
+            printf("%02x\tMOV B, E\t(B) <= (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x44:
-            printf("%04x\tMOV B, H\t(B) <= (H)", *opcode);
+            printf("%02x\tMOV B, H\t(B) <= (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x45:
-            printf("%04x\tMOV B, L\t(B) <= (L)", *opcode);
+            printf("%02x\tMOV B, L\t(B) <= (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x47:
-            printf("%04x\tMOV B, A\t(B) <= (A)", *opcode);
+            printf("%02x\tMOV B, A\t(B) <= (A)", *opcode);
             op_bytes = 1;
             break;
         case 0x48:
-            printf("%04x\tMOV C, B\t(C) <= (B)", *opcode);
+            printf("%02x\tMOV C, B\t(C) <= (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x49:
-            printf("%04x\tMOV C, C\t(C) <= (C)", *opcode);
+            printf("%02x\tMOV C, C\t(C) <= (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x4A:
-            printf("%04x\tMOV C, D\t(C) <= (D)", *opcode);
+            printf("%02x\tMOV C, D\t(C) <= (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x4B:
-            printf("%04x\tMOV B, E\t(C) <= (E)", *opcode);
+            printf("%02x\tMOV B, E\t(C) <= (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x4C:
-            printf("%04x\tMOV B, H\t(C) <= (H)", *opcode);
+            printf("%02x\tMOV B, H\t(C) <= (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x4D:
-            printf("%04x\tMOV B, L\t(C) <= (L)", *opcode);
+            printf("%02x\tMOV B, L\t(C) <= (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x4F:
-            printf("%04x\tMOV B, A\t(C) <= (A)", *opcode);
+            printf("%02x\tMOV B, A\t(C) <= (A)", *opcode);
             op_bytes = 1;
             break;
         case 0x50:
-            printf("%04x\tMOV D, B\t(D) <= (B)", *opcode);
+            printf("%02x\tMOV D, B\t(D) <= (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x51:
-            printf("%04x\tMOV D, C\t(D) <= (C)", *opcode);
+            printf("%02x\tMOV D, C\t(D) <= (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x52:
-            printf("%04x\tMOV D, D\t(D) <= (D)", *opcode);
+            printf("%02x\tMOV D, D\t(D) <= (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x53:
-            printf("%04x\tMOV D, E\t(D) <= (E)", *opcode);
+            printf("%02x\tMOV D, E\t(D) <= (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x54:
-            printf("%04x\tMOV D, H\t(D) <= (H)", *opcode);
+            printf("%02x\tMOV D, H\t(D) <= (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x55:
-            printf("%04x\tMOV D, L\t(D) <= (L)", *opcode);
+            printf("%02x\tMOV D, L\t(D) <= (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x57:
-            printf("%04x\tMOV D, A\t(D) <= (A)", *opcode);
+            printf("%02x\tMOV D, A\t(D) <= (A)", *opcode);
             op_bytes = 1;
             break;
         case 0x58:
-            printf("%04x\tMOV E, B\t(E) <= (B)", *opcode);
+            printf("%02x\tMOV E, B\t(E) <= (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x59:
-            printf("%04x\tMOV E, C\t(E) <= (C)", *opcode);
+            printf("%02x\tMOV E, C\t(E) <= (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x5A:
-            printf("%04x\tMOV E, D\t(E) <= (D)", *opcode);
+            printf("%02x\tMOV E, D\t(E) <= (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x5B:
-            printf("%04x\tMOV E, E\t(E) <= (E)", *opcode);
+            printf("%02x\tMOV E, E\t(E) <= (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x5C:
-            printf("%04x\tMOV E, H\t(E) <= (H)", *opcode);
+            printf("%02x\tMOV E, H\t(E) <= (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x5D:
-            printf("%04x\tMOV E, L\t(E) <= (L)", *opcode);
+            printf("%02x\tMOV E, L\t(E) <= (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x5F:
-            printf("%04x\tMOV E, A\t(E) <= (A)", *opcode);
+            printf("%02x\tMOV E, A\t(E) <= (A)", *opcode);
             op_bytes = 1;
             break;
         case 0x60:
-            printf("%04x\tMOV H, B\t(H) <= (B)", *opcode);
+            printf("%02x\tMOV H, B\t(H) <= (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x61:
-            printf("%04x\tMOV H, C\t(H) <= (C)", *opcode);
+            printf("%02x\tMOV H, C\t(H) <= (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x62:
-            printf("%04x\tMOV H, D\t(H) <= (D)", *opcode);
+            printf("%02x\tMOV H, D\t(H) <= (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x63:
-            printf("%04x\tMOV H, E\t(H) <= (E)", *opcode);
+            printf("%02x\tMOV H, E\t(H) <= (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x64:
-            printf("%04x\tMOV H, H\t(H) <= (H)", *opcode);
+            printf("%02x\tMOV H, H\t(H) <= (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x65:
-            printf("%04x\tMOV H, L\t(H) <= (L)", *opcode);
+            printf("%02x\tMOV H, L\t(H) <= (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x67:
-            printf("%04x\tMOV H, A\t(H) <= (A)", *opcode);
+            printf("%02x\tMOV H, A\t(H) <= (A)", *opcode);
             op_bytes = 1;
             break;
         case 0x68:
-            printf("%04x\tMOV L, B\t(L) <= (B)", *opcode);
+            printf("%02x\tMOV L, B\t(L) <= (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x69:
-            printf("%04x\tMOV L, C\t(L) <= (C)", *opcode);
+            printf("%02x\tMOV L, C\t(L) <= (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x6A:
-            printf("%04x\tMOV L, D\t(L) <= (D)", *opcode);
+            printf("%02x\tMOV L, D\t(L) <= (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x6B:
-            printf("%04x\tMOV L, E\t(L) <= (E)", *opcode);
+            printf("%02x\tMOV L, E\t(L) <= (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x6C:
-            printf("%04x\tMOV L, H\t(L) <= (H)", *opcode);
+            printf("%02x\tMOV L, H\t(L) <= (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x6D:
-            printf("%04x\tMOV L, L\t(L) <= (L)", *opcode);
+            printf("%02x\tMOV L, L\t(L) <= (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x6F:
-            printf("%04x\tMOV L, A\t(L) <= (A)", *opcode);
+            printf("%02x\tMOV L, A\t(L) <= (A)", *opcode);
             op_bytes = 1;
             break;
         case 0x78:
-            printf("%04x\tMOV A, B\t(A) <= (B)", *opcode);
+            printf("%02x\tMOV A, B\t(A) <= (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x79:
-            printf("%04x\tMOV A, C\t(A) <= (C)", *opcode);
+            printf("%02x\tMOV A, C\t(A) <= (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x7A:
-            printf("%04x\tMOV A, D\t(A) <= (D)", *opcode);
+            printf("%02x\tMOV A, D\t(A) <= (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x7B:
-            printf("%04x\tMOV A, E\t(A) <= (E)", *opcode);
+            printf("%02x\tMOV A, E\t(A) <= (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x7C:
-            printf("%04x\tMOV A, H\t(A) <= (H)", *opcode);
+            printf("%02x\tMOV A, H\t(A) <= (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x7D:
-            printf("%04x\tMOV A, L\t(A) <= (L)", *opcode);
+            printf("%02x\tMOV A, L\t(A) <= (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x7F:
-            printf("%04x\tMOV A, A\t(A) <= (A)", *opcode);
+            printf("%02x\tMOV A, A\t(A) <= (A)", *opcode);
             op_bytes = 1;
             break;
         
@@ -330,31 +330,31 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0x46:
-            printf("%04x\tMOV B, M\t(B) <= ((H)(L))", *opcode);
+            printf("%02x\tMOV B, M\t(B) <= ((H)(L))", *opcode);
             op_bytes = 1;
             break;
         case 0x4E:
-            printf("%04x\tMOV C, M\t(C) <= ((H)(L))", *opcode);
+            printf("%02x\tMOV C, M\t(C) <= ((H)(L))", *opcode);
             op_bytes = 1;
             break;
         case 0x56:
-            printf("%04x\tMOV D, M\t(D) <= ((H)(L))", *opcode);
+            printf("%02x\tMOV D, M\t(D) <= ((H)(L))", *opcode);
             op_bytes = 1;
             break;
         case 0x5E:
-            printf("%04x\tMOV E, M\t(E) <= ((H)(L))", *opcode);
+            printf("%02x\tMOV E, M\t(E) <= ((H)(L))", *opcode);
             op_bytes = 1;
             break;
         case 0x66:
-            printf("%04x\tMOV H, M\t(H) <= ((H)(L))", *opcode);
+            printf("%02x\tMOV H, M\t(H) <= ((H)(L))", *opcode);
             op_bytes = 1;
             break;
         case 0x6E:
-            printf("%04x\tMOV L, M\t(L) <= ((H)(L))", *opcode);
+            printf("%02x\tMOV L, M\t(L) <= ((H)(L))", *opcode);
             op_bytes = 1;
             break;
         case 0x7E:
-            printf("%04x\tMOV A, M\t(A) <= ((H)(L))", *opcode);
+            printf("%02x\tMOV A, M\t(A) <= ((H)(L))", *opcode);
             op_bytes = 1;
             break;
 
@@ -369,31 +369,31 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0x70:
-            printf("%04x\tMOV M, B\t((H)(L)) <= (B)", *opcode);
+            printf("%02x\tMOV M, B\t((H)(L)) <= (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x71:
-            printf("%04x\tMOV M, C\t((H)(L)) <= (C)", *opcode);
+            printf("%02x\tMOV M, C\t((H)(L)) <= (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x72:
-            printf("%04x\tMOV M, D\t((H)(L)) <= (D)", *opcode);
+            printf("%02x\tMOV M, D\t((H)(L)) <= (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x73:
-            printf("%04x\tMOV M, E\t((H)(L)) <= (E)", *opcode);
+            printf("%02x\tMOV M, E\t((H)(L)) <= (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x74:
-            printf("%04x\tMOV M, H\t((H)(L)) <= (H)", *opcode);
+            printf("%02x\tMOV M, H\t((H)(L)) <= (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x75:
-            printf("%04x\tMOV M, L\t((H)(L)) <= (L)", *opcode);
+            printf("%02x\tMOV M, L\t((H)(L)) <= (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x77:
-            printf("%04x\tMOV M, A\t((H)(L)) <= (A)", *opcode);
+            printf("%02x\tMOV M, A\t((H)(L)) <= (A)", *opcode);
             op_bytes = 1;
             break;
 
@@ -411,31 +411,31 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0x06:
-            printf("%04x\tMVI B, d8\t(B) <= #$%02x", *opcode, opcode[1]);
+            printf("%02x\tMVI B, d8\t(B) <= #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
         case 0x0E:
-            printf("%04x\tMVI C, d8\t(C) <= #$%02x", *opcode, opcode[1]);
+            printf("%02x\tMVI C, d8\t(C) <= #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
         case 0x16:
-            printf("%04x\tMVI D, d8\t(D) <= #$%02x", *opcode, opcode[1]);
+            printf("%02x\tMVI D, d8\t(D) <= #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
         case 0x1E:
-            printf("%04x\tMVI E, d8\t(E) <= #$%02x", *opcode, opcode[1]);
+            printf("%02x\tMVI E, d8\t(E) <= #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
         case 0x26:
-            printf("%04x\tMVI H, d8\t(H) <= #$%02x", *opcode, opcode[1]);
+            printf("%02x\tMVI H, d8\t(H) <= #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
         case 0x2E:
-            printf("%04x\tMVI L, d8\t(L) <= #$%02x", *opcode, opcode[1]);
+            printf("%02x\tMVI L, d8\t(L) <= #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
         case 0x3E:
-            printf("%04x\tMVI A, d8\t(A) <= #$%02x", *opcode, opcode[1]);
+            printf("%02x\tMVI A, d8\t(A) <= #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
 
@@ -452,7 +452,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0x36:
-            printf("%04x\tMVI M, d8\t((H)(L)) <= #$%02x", *opcode, opcode[1]);
+            printf("%02x\tMVI M, d8\t((H)(L)) <= #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
 
@@ -472,19 +472,19 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0x01:
-            printf("%04x\tLXI B, d16\t(B) <= #$%02x, (C) <= #$%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tLXI B, d16\t(B) <= #$%02x, (C) <= #$%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
         case 0x11:
-            printf("%04x\tLXI D, d16\t(D) <= #$%02x, (E) <= #$%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tLXI D, d16\t(D) <= #$%02x, (E) <= #$%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
         case 0x21:
-            printf("%04x\tLXI H, d16\t(H) <= #$%02x, (L) <= #$%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tLXI H, d16\t(H) <= #$%02x, (L) <= #$%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
         case 0x31:
-            printf("%04x\tLXI SP, d16\t(SPH) <= #$%02x, (SPL) <= #$%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tLXI SP, d16\t(SPH) <= #$%02x, (SPL) <= #$%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
 
@@ -503,7 +503,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0x3A:
-            printf("%04x\tLDA a16\t(A) <= ($%02x%02x)", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tLDA a16\t(A) <= ($%02x%02x)", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
 
@@ -522,7 +522,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0x32:
-            printf("%04x\tSTA a16\t($%02x%02x) <= (A)", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tSTA a16\t($%02x%02x) <= (A)", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
 
@@ -543,7 +543,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0x2A:
-            printf("%04x\tLHLD a16\t(L) <= ($%02x%02x), (H) <= ($%02x%02x + 1)", *opcode, opcode[2], opcode[1], opcode[2], opcode[1]);
+            printf("%02x\tLHLD a16\t(L) <= ($%02x%02x), (H) <= ($%02x%02x + 1)", *opcode, opcode[2], opcode[1], opcode[2], opcode[1]);
             op_bytes = 3;
             break;
 
@@ -563,7 +563,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0x22:
-            printf("%04x\tSHLD a16\t($%02x%02x) <= (L), ($%02x%02x + 1) <= (H)", *opcode, opcode[2], opcode[1], opcode[2], opcode[1]);
+            printf("%02x\tSHLD a16\t($%02x%02x) <= (L), ($%02x%02x + 1) <= (H)", *opcode, opcode[2], opcode[1], opcode[2], opcode[1]);
             op_bytes = 3;
             break;
 
@@ -579,11 +579,11 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0x0A:
-            printf("%04x\tLDAX B\t(A) <= ((B)(C))", *opcode);
+            printf("%02x\tLDAX B\t(A) <= ((B)(C))", *opcode);
             op_bytes = 3;
             break;
         case 0x1A:
-            printf("%04x\tLDAX D\t(A) <= ((D)(E))", *opcode);
+            printf("%02x\tLDAX D\t(A) <= ((D)(E))", *opcode);
             op_bytes = 3;
             break;
 
@@ -599,11 +599,11 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
        case 0x02:
-            printf("%04x\tSTAX B\t((B)(C)) <= (A)", *opcode);
+            printf("%02x\tSTAX B\t((B)(C)) <= (A)", *opcode);
             op_bytes = 1;
             break;
         case 0x12:
-            printf("%04x\tSTAX D\t((D)(E)) <= (A)", *opcode);
+            printf("%02x\tSTAX D\t((D)(E)) <= (A)", *opcode);
             op_bytes = 1;
             break;
 
@@ -618,7 +618,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0xEB:
-            printf("%04x\tXCHG\t(H) <=> (D), (L) <=> (E)", *opcode);
+            printf("%02x\tXCHG\t(H) <=> (D), (L) <=> (E)", *opcode);
             op_bytes = 1;
             break;
 
@@ -637,31 +637,31 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0x80:
-            printf("%04x\tADD B\t(A) <= (A) + (B)", *opcode);
+            printf("%02x\tADD B\t(A) <= (A) + (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x81:
-            printf("%04x\tADD C\t(A) <= (A) + (C)", *opcode);
+            printf("%02x\tADD C\t(A) <= (A) + (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x82:
-            printf("%04x\tADD D\t(A) <= (A) + (D)", *opcode);
+            printf("%02x\tADD D\t(A) <= (A) + (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x83:
-            printf("%04x\tADD E\t(A) <= (A) + (E)", *opcode);
+            printf("%02x\tADD E\t(A) <= (A) + (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x84:
-            printf("%04x\tADD H\t(A) <= (A) + (H)", *opcode);
+            printf("%02x\tADD H\t(A) <= (A) + (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x85:
-            printf("%04x\tADD L\t(A) <= (A) + (L)", *opcode);
+            printf("%02x\tADD L\t(A) <= (A) + (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x87:
-            printf("%04x\tADD A\t(A) <= (A) + (A)", *opcode);
+            printf("%02x\tADD A\t(A) <= (A) + (A)", *opcode);
             op_bytes = 1;
             break;
 
@@ -677,7 +677,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0x86:
-            printf("%04x\tADD M\t(A) <= (A) + ((H)(L))", *opcode);
+            printf("%02x\tADD M\t(A) <= (A) + ((H)(L))", *opcode);
             op_bytes = 1;
             break;
 
@@ -694,7 +694,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xC6:
-            printf("%04x\tADI d8\t(A) <= (A) + #$%02x", *opcode, opcode[1]);
+            printf("%02x\tADI d8\t(A) <= (A) + #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
 
@@ -709,31 +709,31 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0x88:
-            printf("%04x\tADC B\t(A) <= (A) + (B) + (CY)", *opcode);
+            printf("%02x\tADC B\t(A) <= (A) + (B) + (CY)", *opcode);
             op_bytes = 1;
             break;
         case 0x89:
-            printf("%04x\tADC C\t(A) <= (A) + (C) + (CY)", *opcode);
+            printf("%02x\tADC C\t(A) <= (A) + (C) + (CY)", *opcode);
             op_bytes = 1;
             break;
         case 0x8A:
-            printf("%04x\tADC D\t(A) <= (A) + (D) + (CY)", *opcode);
+            printf("%02x\tADC D\t(A) <= (A) + (D) + (CY)", *opcode);
             op_bytes = 1;
             break;
         case 0x8B:
-            printf("%04x\tADC E\t(A) <= (A) + (E) + (CY)", *opcode);
+            printf("%02x\tADC E\t(A) <= (A) + (E) + (CY)", *opcode);
             op_bytes = 1;
             break;
         case 0x8C:
-            printf("%04x\tADC H\t(A) <= (A) + (H) + (CY)", *opcode);
+            printf("%02x\tADC H\t(A) <= (A) + (H) + (CY)", *opcode);
             op_bytes = 1;
             break;
         case 0x8D:
-            printf("%04x\tADC L\t(A) <= (A) + (L) + (CY)", *opcode);
+            printf("%02x\tADC L\t(A) <= (A) + (L) + (CY)", *opcode);
             op_bytes = 1;
             break;
         case 0x8F:
-            printf("%04x\tADC A\t(A) <= (A) + (A) + (CY)", *opcode);
+            printf("%02x\tADC A\t(A) <= (A) + (A) + (CY)", *opcode);
             op_bytes = 1;
             break;
 
@@ -749,7 +749,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0x8E:
-            printf("%04x\tADC M\t(A) <= (A) + ((H)(L)) + (CY)", *opcode);
+            printf("%02x\tADC M\t(A) <= (A) + ((H)(L)) + (CY)", *opcode);
             op_bytes = 1;
             break;
 
@@ -766,7 +766,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xCE:
-            printf("%04x\tACI d8\t(A) <= (A) + #$%02x + (CY)", *opcode, opcode[1]);
+            printf("%02x\tACI d8\t(A) <= (A) + #$%02x + (CY)", *opcode, opcode[1]);
             op_bytes = 2;
             break;
 
@@ -781,31 +781,31 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0x90:
-            printf("%04x\tSUB B\t(A) <= (A) - (B)", *opcode);
+            printf("%02x\tSUB B\t(A) <= (A) - (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x91:
-            printf("%04x\tSUB C\t(A) <= (A) - (C)", *opcode);
+            printf("%02x\tSUB C\t(A) <= (A) - (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x92:
-            printf("%04x\tSUB D\t(A) <= (A) - (D)", *opcode);
+            printf("%02x\tSUB D\t(A) <= (A) - (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x93:
-            printf("%04x\tSUB E\t(A) <= (A) - (E)", *opcode);
+            printf("%02x\tSUB E\t(A) <= (A) - (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x94:
-            printf("%04x\tSUB H\t(A) <= (A) - (H)", *opcode);
+            printf("%02x\tSUB H\t(A) <= (A) - (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x95:
-            printf("%04x\tSUB L\t(A) <= (A) - (L)", *opcode);
+            printf("%02x\tSUB L\t(A) <= (A) - (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x97:
-            printf("%04x\tSUB A\t(A) <= (A) - (A)", *opcode);
+            printf("%02x\tSUB A\t(A) <= (A) - (A)", *opcode);
             op_bytes = 1;
             break;
 
@@ -821,7 +821,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0x96:
-            printf("%04x\tSUB M\t(A) <= (A) - ((H)(L))", *opcode);
+            printf("%02x\tSUB M\t(A) <= (A) - ((H)(L))", *opcode);
             op_bytes = 1;
             break;
 
@@ -838,7 +838,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xD6:
-            printf("%04x\tSUI d8\t(A) <= (A) - #$%02x", *opcode, opcode[1]);
+            printf("%02x\tSUI d8\t(A) <= (A) - #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
 
@@ -853,31 +853,31 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0x98:
-            printf("%04x\tSBB B\t(A) <= (A) - (CY) - (B)", *opcode);
+            printf("%02x\tSBB B\t(A) <= (A) - (CY) - (B)", *opcode);
             op_bytes = 1;
             break;
         case 0x99:
-            printf("%04x\tSBB C\t(A) <= (A) - (CY) - (C)", *opcode);
+            printf("%02x\tSBB C\t(A) <= (A) - (CY) - (C)", *opcode);
             op_bytes = 1;
             break;
         case 0x9A:
-            printf("%04x\tSBB D\t(A) <= (A) - (CY) - (D)", *opcode);
+            printf("%02x\tSBB D\t(A) <= (A) - (CY) - (D)", *opcode);
             op_bytes = 1;
             break;
         case 0x9B:
-            printf("%04x\tSBB E\t(A) <= (A) - (CY) - (E)", *opcode);
+            printf("%02x\tSBB E\t(A) <= (A) - (CY) - (E)", *opcode);
             op_bytes = 1;
             break;
         case 0x9C:
-            printf("%04x\tSBB H\t(A) <= (A) - (CY) - (H)", *opcode);
+            printf("%02x\tSBB H\t(A) <= (A) - (CY) - (H)", *opcode);
             op_bytes = 1;
             break;
         case 0x9D:
-            printf("%04x\tSBB L\t(A) <= (A) - (CY) - (L)", *opcode);
+            printf("%02x\tSBB L\t(A) <= (A) - (CY) - (L)", *opcode);
             op_bytes = 1;
             break;
         case 0x9F:
-            printf("%04x\tSBB A\t(A) <= (A) - (CY) - (A)", *opcode);
+            printf("%02x\tSBB A\t(A) <= (A) - (CY) - (A)", *opcode);
             op_bytes = 1;
             break;
 
@@ -893,7 +893,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0x9E:
-            printf("%04x\tSBB M\t(A) <= (A) - ((H)(L)) - (CY)", *opcode);
+            printf("%02x\tSBB M\t(A) <= (A) - ((H)(L)) - (CY)", *opcode);
             op_bytes = 1;
             break;
 
@@ -910,7 +910,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xDE:
-            printf("%04x\tSBI d8\t(A) <= (A) - #$%02x - (CY)", *opcode, opcode[1]);
+            printf("%02x\tSBI d8\t(A) <= (A) - #$%02x - (CY)", *opcode, opcode[1]);
             op_bytes = 2;
             break;
 
@@ -925,31 +925,31 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, AC
         */
         case 0x04:
-            printf("%04x\tINR B\t(B) <= (B) + 1", *opcode);
+            printf("%02x\tINR B\t(B) <= (B) + 1", *opcode);
             op_bytes = 1;
             break;
         case 0x0C:
-            printf("%04x\tINR C\t(C) <= (C) + 1", *opcode);
+            printf("%02x\tINR C\t(C) <= (C) + 1", *opcode);
             op_bytes = 1;
             break;
         case 0x14:
-            printf("%04x\tINR D\t(D) <= (D) + 1", *opcode);
+            printf("%02x\tINR D\t(D) <= (D) + 1", *opcode);
             op_bytes = 1;
             break;
         case 0x1C:
-            printf("%04x\tINR E\t(E) <= (E) + 1", *opcode);
+            printf("%02x\tINR E\t(E) <= (E) + 1", *opcode);
             op_bytes = 1;
             break;
         case 0x24:
-            printf("%04x\tINR H\t(H) <= (H) + 1", *opcode);
+            printf("%02x\tINR H\t(H) <= (H) + 1", *opcode);
             op_bytes = 1;
             break;
         case 0x2C:
-            printf("%04x\tINR L\t(L) <= (L) + 1", *opcode);
+            printf("%02x\tINR L\t(L) <= (L) + 1", *opcode);
             op_bytes = 1;
             break;
         case 0x3C:
-            printf("%04x\tINR A\t(A) <= (A) + 1", *opcode);
+            printf("%02x\tINR A\t(A) <= (A) + 1", *opcode);
             op_bytes = 1;
             break;
 
@@ -964,7 +964,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, AC
         */
         case 0x34:
-            printf("%04x\tINR M\t((H)(L)) <= ((H)(L)) + 1", *opcode);
+            printf("%02x\tINR M\t((H)(L)) <= ((H)(L)) + 1", *opcode);
             op_bytes = 1;
             break;
 
@@ -979,31 +979,31 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, AC
         */
         case 0x05:
-            printf("%04x\tDCR B\t(B) <= (B) - 1", *opcode);
+            printf("%02x\tDCR B\t(B) <= (B) - 1", *opcode);
             op_bytes = 1;
             break;
         case 0x0D:
-            printf("%04x\tDCR C\t(C) <= (C) - 1", *opcode);
+            printf("%02x\tDCR C\t(C) <= (C) - 1", *opcode);
             op_bytes = 1;
             break;
         case 0x15:
-            printf("%04x\tDCR D\t(D) <= (D) - 1", *opcode);
+            printf("%02x\tDCR D\t(D) <= (D) - 1", *opcode);
             op_bytes = 1;
             break;
         case 0x1D:
-            printf("%04x\tDCR E\t(E) <= (E) - 1", *opcode);
+            printf("%02x\tDCR E\t(E) <= (E) - 1", *opcode);
             op_bytes = 1;
             break;
         case 0x25:
-            printf("%04x\tDCR H\t(H) <= (H) - 1", *opcode);
+            printf("%02x\tDCR H\t(H) <= (H) - 1", *opcode);
             op_bytes = 1;
             break;
         case 0x2D:
-            printf("%04x\tDCR L\t(L) <= (L) - 1", *opcode);
+            printf("%02x\tDCR L\t(L) <= (L) - 1", *opcode);
             op_bytes = 1;
             break;
         case 0x3D:
-            printf("%04x\tDCR A\t(A) <= (A) + 1", *opcode);
+            printf("%02x\tDCR A\t(A) <= (A) + 1", *opcode);
             op_bytes = 1;
             break;
 
@@ -1018,7 +1018,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, AC
         */
         case 0x35:
-            printf("%04x\tDCR M\t((H)(L)) <= ((H)(L)) - 1", *opcode);
+            printf("%02x\tDCR M\t((H)(L)) <= ((H)(L)) - 1", *opcode);
             op_bytes = 1;
             break;
 
@@ -1032,19 +1032,19 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0x03:
-            printf("%04x\tINX B\t(B)(C) <= (B)(C) + 1", *opcode);
+            printf("%02x\tINX B\t(B)(C) <= (B)(C) + 1", *opcode);
             op_bytes = 1;
             break;
         case 0x13:
-            printf("%04x\tINX D\t(D)(E) <= (D)(E) + 1", *opcode);
+            printf("%02x\tINX D\t(D)(E) <= (D)(E) + 1", *opcode);
             op_bytes = 1;
             break;
         case 0x23:
-            printf("%04x\tINX H\t(H)(L) <= (H)(L) + 1", *opcode);
+            printf("%02x\tINX H\t(H)(L) <= (H)(L) + 1", *opcode);
             op_bytes = 1;
             break;
         case 0x33:
-            printf("%04x\tINX SP\t(SP) <= (SP) + 1", *opcode);
+            printf("%02x\tINX SP\t(SP) <= (SP) + 1", *opcode);
             op_bytes = 1;
             break;
 
@@ -1058,19 +1058,19 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0x0B:
-            printf("%04x\tDCX B\t(B)(C) <= (B)(C) - 1", *opcode);
+            printf("%02x\tDCX B\t(B)(C) <= (B)(C) - 1", *opcode);
             op_bytes = 1;
             break;
         case 0x1B:
-            printf("%04x\tDCX D\t(D)(E) <= (D)(E) - 1", *opcode);
+            printf("%02x\tDCX D\t(D)(E) <= (D)(E) - 1", *opcode);
             op_bytes = 1;
             break;
         case 0x2B:
-            printf("%04x\tDCX H\t(H)(L) <= (H)(L) - 1", *opcode);
+            printf("%02x\tDCX H\t(H)(L) <= (H)(L) - 1", *opcode);
             op_bytes = 1;
             break;
         case 0x3B:
-            printf("%04x\tDCX SP\t(SP) <= (SP) - 1", *opcode);
+            printf("%02x\tDCX SP\t(SP) <= (SP) - 1", *opcode);
             op_bytes = 1;
             break;
 
@@ -1086,19 +1086,19 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : CY
         */
         case 0x09:
-            printf("%04x\tDAD B\t(H)(L) <= (H)(L) + (B)(C)", *opcode);
+            printf("%02x\tDAD B\t(H)(L) <= (H)(L) + (B)(C)", *opcode);
             op_bytes = 1;
             break;
         case 0x19:
-            printf("%04x\tDAD D\t(H)(L) <= (H)(L) + (D)(E)", *opcode);
+            printf("%02x\tDAD D\t(H)(L) <= (H)(L) + (D)(E)", *opcode);
             op_bytes = 1;
             break;
         case 0x29:
-            printf("%04x\tDAD H\t(H)(L) <= (H)(L) + (H)(L)", *opcode);
+            printf("%02x\tDAD H\t(H)(L) <= (H)(L) + (H)(L)", *opcode);
             op_bytes = 1;
             break;
         case 0x39:
-            printf("%04x\tDAD SP\t(H)(L) <= (H)(L) + (SP)", *opcode);
+            printf("%02x\tDAD SP\t(H)(L) <= (H)(L) + (SP)", *opcode);
             op_bytes = 1;
             break;
 
@@ -1117,7 +1117,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0x27:
-            printf("%04x\tDAA\tDecimal Adjust Accumulator", *opcode);
+            printf("%02x\tDAA\tDecimal Adjust Accumulator", *opcode);
             op_bytes = 1;
             break;
 
@@ -1136,31 +1136,31 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xA0:
-            printf("%04x\tANA B\t(A) <= (A) && (B)", *opcode);
+            printf("%02x\tANA B\t(A) <= (A) && (B)", *opcode);
             op_bytes = 1;
             break;
         case 0xA1:
-            printf("%04x\tANA C\t(A) <= (A) && (C)", *opcode);
+            printf("%02x\tANA C\t(A) <= (A) && (C)", *opcode);
             op_bytes = 1;
             break;
         case 0xA2:
-            printf("%04x\tANA D\t(A) <= (A) && (D)", *opcode);
+            printf("%02x\tANA D\t(A) <= (A) && (D)", *opcode);
             op_bytes = 1;
             break;
         case 0xA3:
-            printf("%04x\tANA E\t(A) <= (A) && (E)", *opcode);
+            printf("%02x\tANA E\t(A) <= (A) && (E)", *opcode);
             op_bytes = 1;
             break;
         case 0xA4:
-            printf("%04x\tANA H\t(A) <= (A) && (H)", *opcode);
+            printf("%02x\tANA H\t(A) <= (A) && (H)", *opcode);
             op_bytes = 1;
             break;
         case 0xA5:
-            printf("%04x\tANA L\t(A) <= (A) && (L)", *opcode);
+            printf("%02x\tANA L\t(A) <= (A) && (L)", *opcode);
             op_bytes = 1;
             break;
         case 0xA7:
-            printf("%04x\tANA A\t(A) <= (A) && (A)", *opcode);
+            printf("%02x\tANA A\t(A) <= (A) && (A)", *opcode);
             op_bytes = 1;
             break;
 
@@ -1175,7 +1175,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xA6:
-            printf("%04x\tANA M\t(A) <= (A) && ((H)(L))", *opcode);
+            printf("%02x\tANA M\t(A) <= (A) && ((H)(L))", *opcode);
             op_bytes = 1;
             break;
 
@@ -1192,7 +1192,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xE6:
-            printf("%04x\tANI d8\t(A) <= (A) && #$%02x", *opcode, opcode[1]);
+            printf("%02x\tANI d8\t(A) <= (A) && #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
 
@@ -1207,31 +1207,31 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xA8:
-            printf("%04x\tXRA B\t(A) <= (A) ^ (B)", *opcode);
+            printf("%02x\tXRA B\t(A) <= (A) ^ (B)", *opcode);
             op_bytes = 1;
             break;
         case 0xA9:
-            printf("%04x\tXRA C\t(A) <= (A) ^ (C)", *opcode);
+            printf("%02x\tXRA C\t(A) <= (A) ^ (C)", *opcode);
             op_bytes = 1;
             break;
         case 0xAA:
-            printf("%04x\tXRA D\t(A) <= (A) ^ (D)", *opcode);
+            printf("%02x\tXRA D\t(A) <= (A) ^ (D)", *opcode);
             op_bytes = 1;
             break;
         case 0xAB:
-            printf("%04x\tXRA E\t(A) <= (A) ^ (E)", *opcode);
+            printf("%02x\tXRA E\t(A) <= (A) ^ (E)", *opcode);
             op_bytes = 1;
             break;
         case 0xAC:
-            printf("%04x\tXRA H\t(A) <= (A) ^ (H)", *opcode);
+            printf("%02x\tXRA H\t(A) <= (A) ^ (H)", *opcode);
             op_bytes = 1;
             break;
         case 0xAD:
-            printf("%04x\tXRA L\t(A) <= (A) ^ (L)", *opcode);
+            printf("%02x\tXRA L\t(A) <= (A) ^ (L)", *opcode);
             op_bytes = 1;
             break;
         case 0xAF:
-            printf("%04x\tXRA A\t(A) <= (A) ^ (A)", *opcode);
+            printf("%02x\tXRA A\t(A) <= (A) ^ (A)", *opcode);
             op_bytes = 1;
             break;
 
@@ -1246,7 +1246,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xAE:
-            printf("%04x\tXRA M\t(A) <= (A) ^ ((H)(L))", *opcode);
+            printf("%02x\tXRA M\t(A) <= (A) ^ ((H)(L))", *opcode);
             op_bytes = 1;
             break;
 
@@ -1263,7 +1263,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xEE:
-            printf("%04x\tXRI d8\t(A) <= (A) ^ #$%02x", *opcode, opcode[1]);
+            printf("%02x\tXRI d8\t(A) <= (A) ^ #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
 
@@ -1278,31 +1278,31 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xB0:
-            printf("%04x\tORA B\t(A) <= (A) || (B)", *opcode);
+            printf("%02x\tORA B\t(A) <= (A) || (B)", *opcode);
             op_bytes = 1;
             break;
         case 0xB1:
-            printf("%04x\tORA C\t(A) <= (A) || (C)", *opcode);
+            printf("%02x\tORA C\t(A) <= (A) || (C)", *opcode);
             op_bytes = 1;
             break;
         case 0xB2:
-            printf("%04x\tORA D\t(A) <= (A) || (D)", *opcode);
+            printf("%02x\tORA D\t(A) <= (A) || (D)", *opcode);
             op_bytes = 1;
             break;
         case 0xB3:
-            printf("%04x\tORA E\t(A) <= (A) || (E)", *opcode);
+            printf("%02x\tORA E\t(A) <= (A) || (E)", *opcode);
             op_bytes = 1;
             break;
         case 0xB4:
-            printf("%04x\tORA H\t(A) <= (A) || (H)", *opcode);
+            printf("%02x\tORA H\t(A) <= (A) || (H)", *opcode);
             op_bytes = 1;
             break;
         case 0xB5:
-            printf("%04x\tORA L\t(A) <= (A) || (L)", *opcode);
+            printf("%02x\tORA L\t(A) <= (A) || (L)", *opcode);
             op_bytes = 1;
             break;
         case 0xB7:
-            printf("%04x\tORA A\t(A) <= (A) || (A)", *opcode);
+            printf("%02x\tORA A\t(A) <= (A) || (A)", *opcode);
             op_bytes = 1;
             break;
 
@@ -1317,7 +1317,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xB6:
-            printf("%04x\tORA M\t(A) <= (A) || ((H)(L))", *opcode);
+            printf("%02x\tORA M\t(A) <= (A) || ((H)(L))", *opcode);
             op_bytes = 1;
             break;
 
@@ -1334,7 +1334,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xF6:
-            printf("%04x\tORI d8\t(A) <= (A) || #$%02x", *opcode, opcode[1]);
+            printf("%02x\tORI d8\t(A) <= (A) || #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
 
@@ -1349,31 +1349,31 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xB8:
-            printf("%04x\tCMP B\t(A) - (B)", *opcode);
+            printf("%02x\tCMP B\t(A) - (B)", *opcode);
             op_bytes = 1;
             break;
         case 0xB9:
-            printf("%04x\tCMP C\t(A) - (C)", *opcode);
+            printf("%02x\tCMP C\t(A) - (C)", *opcode);
             op_bytes = 1;
             break;
         case 0xBA:
-            printf("%04x\tCMP D\t(A) - (D)", *opcode);
+            printf("%02x\tCMP D\t(A) - (D)", *opcode);
             op_bytes = 1;
             break;
         case 0xBB:
-            printf("%04x\tCMP E\t(A) - (E)", *opcode);
+            printf("%02x\tCMP E\t(A) - (E)", *opcode);
             op_bytes = 1;
             break;
         case 0xBC:
-            printf("%04x\tCMP H\t(A) - (H)", *opcode);
+            printf("%02x\tCMP H\t(A) - (H)", *opcode);
             op_bytes = 1;
             break;
         case 0xBD:
-            printf("%04x\tCMP L\t(A) - (L)", *opcode);
+            printf("%02x\tCMP L\t(A) - (L)", *opcode);
             op_bytes = 1;
             break;
         case 0xBF:
-            printf("%04x\tCMP A\t(A) - (A)", *opcode);
+            printf("%02x\tCMP A\t(A) - (A)", *opcode);
             op_bytes = 1;
             break;
 
@@ -1389,7 +1389,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xBE:
-            printf("%04x\tCMP M\t(A) - ((H)(L))", *opcode);
+            printf("%02x\tCMP M\t(A) - ((H)(L))", *opcode);
             op_bytes = 1;
             break;
 
@@ -1406,7 +1406,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xFE:
-            printf("%04x\tCPI d8\t(A) - #$%02x", *opcode, opcode[1]);
+            printf("%02x\tCPI d8\t(A) - #$%02x", *opcode, opcode[1]);
             op_bytes = 2;
             break;
 
@@ -1421,7 +1421,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : CY
         */
         case 0x07:
-            printf("%04x\tRLC\t(An+1) <= (An), (A0) <= (A7), (CY) <= (A7)", *opcode);
+            printf("%02x\tRLC\t(An+1) <= (An), (A0) <= (A7), (CY) <= (A7)", *opcode);
             op_bytes = 1;
             break;
 
@@ -1436,7 +1436,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : CY
         */
         case 0x0F:
-            printf("%04x\tRRC\t(An) <= (An+1), (A7) <= (A0), (CY) <= (A0)", *opcode);
+            printf("%02x\tRRC\t(An) <= (An+1), (A7) <= (A0), (CY) <= (A0)", *opcode);
             op_bytes = 1;
             break;
 
@@ -1451,7 +1451,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : CY
         */
         case 0x17:
-            printf("%04x\tRAL\t(An+1) <= (An), (CY) <= (A7), (A0) <= (CY)", *opcode);
+            printf("%02x\tRAL\t(An+1) <= (An), (CY) <= (A7), (A0) <= (CY)", *opcode);
             op_bytes = 1;
             break;
 
@@ -1466,7 +1466,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : CY
         */
         case 0x1F:
-            printf("%04x\tRAR\t(An) <= (An+1), (CY) <= (A0), (A7) <= (CY)", *opcode);
+            printf("%02x\tRAR\t(An) <= (An+1), (CY) <= (A0), (A7) <= (CY)", *opcode);
             op_bytes = 1;
             break;
 
@@ -1480,7 +1480,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0x2F:
-            printf("%04x\tCMA\t(An) <= !(An)", *opcode);
+            printf("%02x\tCMA\t(An) <= !(An)", *opcode);
             op_bytes = 1;
             break;
 
@@ -1494,7 +1494,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : CY
         */
         case 0x3F:
-            printf("%04x\tCMC\t(CY) <= !(CY)", *opcode);
+            printf("%02x\tCMC\t(CY) <= !(CY)", *opcode);
             op_bytes = 1;
             break;
 
@@ -1508,7 +1508,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : CY
         */
         case 0x37:
-            printf("%04x\tSTC\t(CY) <= 1", *opcode);
+            printf("%02x\tSTC\t(CY) <= 1", *opcode);
             op_bytes = 1;
             break;
 
@@ -1552,7 +1552,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
         */
         case 0xC3:
         case 0xCB:
-            printf("%04x\tJMP addr\t(PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tJMP addr\t(PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
 
@@ -1571,35 +1571,35 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0xC2:
-            printf("%04x\tJNZ addr\tif(Z = 0): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tJNZ addr\tif(Z = 0): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
         case 0xCA:
-            printf("%04x\tJZ addr\tif(Z = 1): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tJZ addr\tif(Z = 1): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
         case 0xD2:
-            printf("%04x\tJNC addr\tif(CY = 0): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tJNC addr\tif(CY = 0): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
         case 0xDA:
-            printf("%04x\tJC addr\tif(CY = 1): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tJC addr\tif(CY = 1): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
         case 0xE2:
-            printf("%04x\tJPO addr\tif(P = 0): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tJPO addr\tif(P = 0): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
         case 0xEA:
-            printf("%04x\tJPE addr\tif(P = 1): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tJPE addr\tif(P = 1): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
         case 0xF2:
-            printf("%04x\tJP addr\tif(S = 0): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tJP addr\tif(S = 0): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
         case 0xFA:
-            printf("%04x\tJM addr\tif(S = 1): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tJM addr\tif(S = 1): (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
 
@@ -1624,7 +1624,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
         case 0xDD:
         case 0xED:
         case 0xFD:
-            printf("%04x\tCALL addr\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tCALL addr\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
 
@@ -1643,35 +1643,35 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0xC4:
-            printf("%04x\tCNZ addr\tif(Z = 0): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tCNZ addr\tif(Z = 0): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
         case 0xCC:
-            printf("%04x\tCZ addr\tif(Z = 1): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tCZ addr\tif(Z = 1): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
         case 0xD4:
-            printf("%04x\tCNC addr\tif(CY = 0): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tCNC addr\tif(CY = 0): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
         case 0xDC:
-            printf("%04x\tCC addr\tif(CY = 1): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tCC addr\tif(CY = 1): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
         case 0xE4:
-            printf("%04x\tCPO addr\tif(P = 0): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tCPO addr\tif(P = 0): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
         case 0xEC:
-            printf("%04x\tCPE addr\tif(P = 1): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tCPE addr\tif(P = 1): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
         case 0xF4:
-            printf("%04x\tCP addr\tif(S = 0): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tCP addr\tif(S = 0): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
         case 0xFC:
-            printf("%04x\tCM addr\tif(S = 1): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
+            printf("%02x\tCM addr\tif(S = 1): ((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP - 2), (PC) <= #$%02x%02x", *opcode, opcode[2], opcode[1]);
             op_bytes = 3;
             break;
 
@@ -1689,7 +1689,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
         */
         case 0xC9:
         case 0xD9:
-            printf("%04x\tRET\t(PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            printf("%02x\tRET\t(PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
             op_bytes = 1;
             break;
 
@@ -1704,35 +1704,35 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0xC0:
-            printf("%04x\tRNZ\tif(Z = 0): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            printf("%02x\tRNZ\tif(Z = 0): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
             op_bytes = 1;
             break;
         case 0xC8:
-            printf("%04x\tRZ\tif(Z = 1): ((PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            printf("%02x\tRZ\tif(Z = 1): ((PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
             op_bytes = 1;
             break;
         case 0xD0:
-            printf("%04x\tRNC\tif(CY = 0): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            printf("%02x\tRNC\tif(CY = 0): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
             op_bytes = 1;
             break;
         case 0xD8:
-            printf("%04x\tRC\tif(CY = 1): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            printf("%02x\tRC\tif(CY = 1): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
             op_bytes = 1;
             break;
         case 0xE0:
-            printf("%04x\tRPO\tif(P = 0): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            printf("%02x\tRPO\tif(P = 0): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
             op_bytes = 1;
             break;
         case 0xE8:
-            printf("%04x\tRPE\tif(P = 1): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            printf("%02x\tRPE\tif(P = 1): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
             op_bytes = 1;
             break;
         case 0xF0:
-            printf("%04x\tRP\tif(S = 0): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            printf("%02x\tRP\tif(S = 0): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
             op_bytes = 1;
             break;
         case 0xF8:
-            printf("%04x\tRM\tif(S = 1): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            printf("%02x\tRM\tif(S = 1): (PCL) <= ((SP)), (PCH) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
             op_bytes = 1;
             break;
 
@@ -1752,35 +1752,35 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0xC7:
-            printf("%04x\tRST 0\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b000", *opcode);
+            printf("%02x\tRST 0\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b000", *opcode);
             op_bytes = 1;
             break;
         case 0xCF:
-            printf("%04x\tRST 1\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b001", *opcode);
+            printf("%02x\tRST 1\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b001", *opcode);
             op_bytes = 1;
             break;
         case 0xD7:
-            printf("%04x\tRST 2\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b010", *opcode);
+            printf("%02x\tRST 2\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b010", *opcode);
             op_bytes = 1;
             break;
         case 0xDF:
-            printf("%04x\tRST 3\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b011", *opcode);
+            printf("%02x\tRST 3\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b011", *opcode);
             op_bytes = 1;
             break;
         case 0xE7:
-            printf("%04x\tRST 4\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b100", *opcode);
+            printf("%02x\tRST 4\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b100", *opcode);
             op_bytes = 1;
             break;
         case 0xEF:
-            printf("%04x\tRST 5\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b101", *opcode);
+            printf("%02x\tRST 5\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b101", *opcode);
             op_bytes = 1;
             break;
         case 0xF7:
-            printf("%04x\tRST 6\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b110", *opcode);
+            printf("%02x\tRST 6\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b110", *opcode);
             op_bytes = 1;
             break;
         case 0xFF:
-            printf("%04x\tRST 7\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b111", *opcode);
+            printf("%02x\tRST 7\t((SP) - 1) <= (PCH), ((SP) - 2) <= (PCL), (SP) <= (SP) - 2, (PC) <= 8 * 0b111", *opcode);
             op_bytes = 1;
             break;
 
@@ -1796,7 +1796,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0xE9:
-            printf("%04x\tPCHL\t(PCH) <= (H), (PCL) <= (L)", *opcode);
+            printf("%02x\tPCHL\t(PCH) <= (H), (PCL) <= (L)", *opcode);
             op_bytes = 1;
             break;
 
@@ -1818,15 +1818,15 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0xC5:
-            printf("%04x\tPUSH B\t((SP) - 1) <= (C), ((SP) - 2) <= (B), (SP) <= (SP) - 2", *opcode);
+            printf("%02x\tPUSH B\t((SP) - 1) <= (C), ((SP) - 2) <= (B), (SP) <= (SP) - 2", *opcode);
             op_bytes = 1;
             break;
         case 0xD5:
-            printf("%04x\tPUSH E\t((SP) - 1) <= (D), ((SP) - 2) <= (E), (SP) <= (SP) - 2", *opcode);
+            printf("%02x\tPUSH E\t((SP) - 1) <= (D), ((SP) - 2) <= (E), (SP) <= (SP) - 2", *opcode);
             op_bytes = 1;
             break;
         case 0xE5:
-            printf("%04x\tPUSH H\t((SP) - 1) <= (H), ((SP) - 2) <= (L), (SP) <= (SP) - 2", *opcode);
+            printf("%02x\tPUSH H\t((SP) - 1) <= (H), ((SP) - 2) <= (L), (SP) <= (SP) - 2", *opcode);
             op_bytes = 1;
             break;
 
@@ -1843,7 +1843,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0xF5:
-            printf("%04x\tPUSH PSW\t((SP) - 1) <= (A), ((SP) - 2) <= (F), (SP) <= (SP) - 2", *opcode);
+            printf("%02x\tPUSH PSW\t((SP) - 1) <= (A), ((SP) - 2) <= (F), (SP) <= (SP) - 2", *opcode);
             op_bytes = 1;
             break;
 
@@ -1863,15 +1863,15 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0xC1:
-            printf("%04x\tPOP B\t(C) <= ((SP)), (B) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            printf("%02x\tPOP B\t(C) <= ((SP)), (B) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
             op_bytes = 1;
             break;
         case 0xD1:
-            printf("%04x\tPOP D\t(D) <= ((SP)), (E) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            printf("%02x\tPOP D\t(D) <= ((SP)), (E) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
             op_bytes = 1;
             break;
         case 0xE1:
-            printf("%04x\tPOP H\t(H) <= ((SP)), (L) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            printf("%02x\tPOP H\t(H) <= ((SP)), (L) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
             op_bytes = 1;
             break;
 
@@ -1888,7 +1888,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : Z, S, P, CY, AC
         */
         case 0xF1:
-            printf("%04x\tPOP PSW\t(F) <= ((SP)), (A) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
+            printf("%02x\tPOP PSW\t(F) <= ((SP)), (A) <= ((SP) + 1), (SP) <= (SP) + 2", *opcode);
             op_bytes = 1;
             break;
 
@@ -1904,7 +1904,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0xE3:
-            printf("%04x\tXTHL\t(L) <= ((SP)), (H) <= ((SP) + 1)", *opcode);
+            printf("%02x\tXTHL\t(L) <= ((SP)), (H) <= ((SP) + 1)", *opcode);
             op_bytes = 1;
             break;
 
@@ -1918,7 +1918,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0xF9:
-            printf("%04x\tSPHL\t(SP) <= (H)(L)", *opcode);
+            printf("%02x\tSPHL\t(SP) <= (H)(L)", *opcode);
             op_bytes = 1;
             break;
 
@@ -1934,7 +1934,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0xDB:
-            printf("%04x\tIN port\t(A) <= (data)", *opcode);
+            printf("%02x\tIN port\t(A) <= (data)", *opcode);
             op_bytes = 2;
             break;
 
@@ -1950,7 +1950,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0xD3:
-            printf("%04x\tOUT port\t(data) <= (A)", *opcode);
+            printf("%02x\tOUT port\t(data) <= (A)", *opcode);
             op_bytes = 2;
             break;
 
@@ -1964,7 +1964,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0xFB:
-            printf("%04x\tEI\tEnable interrupts", *opcode);
+            printf("%02x\tEI\tEnable interrupts", *opcode);
             op_bytes = 1;
             break;
 
@@ -1978,7 +1978,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0xF3:
-            printf("%04x\tDI\tDisable interrupts", *opcode);
+            printf("%02x\tDI\tDisable interrupts", *opcode);
             op_bytes = 1;
             break;
 
@@ -1992,7 +1992,7 @@ int disassemble8080(unsigned char *code_buffer, int pc)
             Flags : None
         */
         case 0x76:
-            printf("%04x\tHLT\tStop processor", *opcode);
+            printf("%02x\tHLT\tStop processor", *opcode);
             op_bytes = 1;
             break;
 
@@ -2013,12 +2013,12 @@ int disassemble8080(unsigned char *code_buffer, int pc)
         case 0x28:
         case 0x30:
         case 0x38:
-            printf("%04x\tNOP\t", *opcode);
+            printf("%02x\tNOP\t", *opcode);
             op_bytes = 1;
             break;
 
         default:
-            printf("Instruction non prise en charge : %04x", *opcode);
+            printf("Instruction non prise en charge : %02x", *opcode);
             break;
     }
     printf("\n");
